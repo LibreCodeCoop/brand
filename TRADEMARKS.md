@@ -3,31 +3,26 @@ SPDX-FileCopyrightText: 2026 LibreCode Coop contributors
 SPDX-License-Identifier: CC-BY-SA-4.0
 -->
 
-# Trademark policy status
+# Trademark policy
 
-This file is the working location for the LibreCode trademark policy.
+The copyright license for documentation and official artwork is CC BY-SA 4.0. Trademark rights are separate.
 
-Copyright licenses in this repository, including CC BY-SA 4.0, do **not** grant trademark rights. Creative Commons licenses themselves exclude trademark rights from the licensed rights.
+The names and official marks of LibreCode and LibreCode Coop may be used truthfully to refer to the project, organization, compatible services, integrations, reviews, documentation, and community activity, provided the use does not create confusion about source, affiliation, sponsorship, endorsement, or official status.
 
-## Interim principles
+## You may
 
-Until the full policy is completed and registration details are verified:
+- accurately refer to LibreCode and LibreCode Coop;
+- state compatibility or integration truthfully;
+- use official unmodified artwork for identification and reference;
+- discuss, review, teach, or document the project;
+- describe independent services without implying they are official.
 
-- truthful reference to the official project should not imply sponsorship or endorsement that does not exist;
-- modified or independently operated products should not present themselves as the official project;
-- the official names and logos should not be altered in ways that create confusion about origin;
-- community use should be encouraged when it is accurate and non-confusing;
-- commercial usage rules should be explicit rather than inferred from the software license.
+## You must not
 
-## Pending legal verification
+- present a modified or independent product as the official project;
+- imply sponsorship, endorsement, partnership, or certification that does not exist;
+- use a confusingly similar name or mark for a competing or derivative product;
+- alter official artwork and present the result as an official mark;
+- use the marks in a deceptive or misleading way.
 
-Issue #4 tracks:
-- INPI registration numbers and classes;
-- exact legal owner;
-- attribution wording;
-- nominative/community use;
-- forks and modified distributions;
-- commercial support/hosting;
-- domains, events, merchandise, and permission requests.
-
-This draft is not a substitute for verified registration data or legal review.
+Questions about uses outside these rules should be directed to the project's public contact channel.
