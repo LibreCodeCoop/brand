@@ -14,7 +14,7 @@ Changes to official naming, logo geometry, core brand colors, trademark rules, o
 ## Source hierarchy
 
 1. Current reviewed files and guidelines in this repository.
-2. The public brand page at https://librecode.coop/brand.
+2. https://librecode.coop/brand
 3. Generated artifacts produced from this repository.
 
 ## Versioning

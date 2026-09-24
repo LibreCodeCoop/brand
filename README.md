@@ -25,10 +25,6 @@ Public guide: https://librecode.coop/brand
 - `source/artwork/` — canonical editable artwork.
 - `assets/` — asset distribution policy.
 - `examples/` — usage examples.
-- `manual/` — Typst source for the generated manual.
+- `manual/` — Typst source.
 - `docs/` — architecture, decisions, and references.
 - `LICENSES/` and `REUSE.toml` — licensing metadata.
-
-## Manual
-
-The manual is authored in Typst and generated in CI. The Git source is canonical.
