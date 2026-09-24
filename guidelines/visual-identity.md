@@ -9,7 +9,7 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 
 The canonical logo master is:
 
-`source/artwork/librecode-logo.svg`
+`source/artwork/librecode-master.svg`
 
 The current logo combines the connected-node symbol with the LibreCode wordmark.
 
