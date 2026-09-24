@@ -29,8 +29,12 @@ jobs:
       - name: Generate approved derivatives
         run: |
           mkdir -p build
-          rsvg-convert -w 1024 -f png -o build/librecode-logo.png source/artwork/librecode-logo.svg
-          rsvg-convert -f pdf -o build/librecode-logo.pdf source/artwork/librecode-logo.svg
+          for svg in source/artwork/*.svg; do
+            name="$(basename "$svg" .svg)"
+            rsvg-convert -w 1024 -f png -o "build/$name.png" "$svg"
+            rsvg-convert -f pdf -o "build/$name.pdf" "$svg"
+            cp "$svg" "build/$name.svg"
+          done
       - uses: actions/upload-artifact@v6
         with:
           name: librecode-logo-derivatives
