@@ -3,8 +3,14 @@ SPDX-FileCopyrightText: 2026 LibreCode Coop contributors
 SPDX-License-Identifier: CC-BY-SA-4.0
 -->
 
-# Source artwork
+# Canonical artwork source
 
-Store preferred editable/canonical source material here.
+Store current canonical editable artwork here.
 
-Do not place generated exports here. If a proprietary design-tool source must be retained temporarily during migration, document the tool, version, provenance, and open replacement plan in the asset inventory.
+- prefer SVG;
+- strip unnecessary editor metadata;
+- do not store duplicate raster exports as source;
+- generate PNG/PDF derivatives in CI;
+- preserve SPDX/REUSE coverage.
+
+Third-party fonts, if vendored, must keep their upstream license.
