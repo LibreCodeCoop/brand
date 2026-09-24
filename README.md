@@ -31,7 +31,7 @@ LibreCode uses **Libre** in the sense of freedom: the ability to understand, ada
 
 ## Licensing and trademarks
 
-Documentation and brand artwork are intended to be openly licensed under **CC BY-SA 4.0**, unless a file states otherwise. Build scripts and automation are licensed under **AGPL-3.0-or-later**.
+Documentation is licensed under **CC BY-SA 4.0**, unless a file states otherwise. Build scripts and automation are licensed under **AGPL-3.0-or-later**. Official brand artwork uses **LicenseRef-Brand-Asset** until the complete copyright chain is verified; fonts retain their upstream licenses such as **OFL-1.1**.
 
 Copyright licensing does **not** grant permission to use LibreCode names or logos in a way that creates confusion about origin, affiliation, sponsorship, or endorsement. See `TRADEMARKS.md`.
 
