@@ -5,25 +5,20 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 
 # Brand governance
 
-This repository is the canonical technical source of truth for the LibreCode brand system.
+This repository is the canonical source of truth for the current LibreCode brand system.
 
 ## Authority
 
-Changes to official naming, logo geometry, core color definitions, trademark rules, or the meaning of the brand require maintainer review.
+Changes to official naming, logo geometry, core brand colors, trademark rules, or canonical artwork require maintainer review.
 
 ## Source hierarchy
 
-1. Approved files and guidelines in this repository.
+1. Current reviewed files and guidelines in this repository.
 2. The public brand page at https://librecode.coop/brand.
-3. Released PDF/manual artifacts generated from this repository.
-4. Historical or working copies in shared storage.
+3. Generated artifacts produced from this repository.
 
-If sources disagree, the current reviewed repository state takes precedence unless legal/trademark documentation states otherwise.
+## Versioning
 
-## Change classes
-
-- **Patch:** typo, metadata, build, or non-semantic correction.
-- **Minor:** compatible addition such as a new approved export or additional usage example.
-- **Major:** identity change that invalidates prior guidance, such as logo geometry, primary palette, official naming, or a materially different trademark rule.
-
-Tagged releases may follow semantic versioning for the brand system.
+- PATCH: non-semantic corrections.
+- MINOR: compatible additions.
+- MAJOR: changes that invalidate prior usage.
