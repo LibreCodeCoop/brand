@@ -5,20 +5,18 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 
 # Canonical artwork source
 
-Store current canonical editable artwork here.
+The only editable logo source is `librecode-master.svg`.
 
-- prefer SVG;
-- strip unnecessary editor metadata;
-- do not store duplicate raster exports as source;
-- generate PNG/PDF derivatives in CI;
-- preserve SPDX/REUSE coverage.
+`brand-assets.json` is the machine-readable contract for:
+- normalization and safe framing;
+- approved color variants;
+- clear-space reference geometry;
+- export sizes and formats.
 
-Third-party fonts, if vendored, must keep their upstream license.
+Do not edit public SVG/PNG/PDF variants manually. Generate them with:
 
+```bash
+python scripts/build_assets.py --output build/assets
+```
 
-## Approved variants
-
-- `librecode-logo.svg` — primary full-color artwork for light/neutral backgrounds.
-- `librecode-logo-reversed.svg` — reversed white artwork for sufficiently dark backgrounds.
-
-Use the variant appropriate to the background. Do not recolor either file manually.
+The generator uses Inkscape's drawing bounds, applies the repository-defined safety padding, derives approved color variants, and exports SVG/PDF/PNG from the same source.
