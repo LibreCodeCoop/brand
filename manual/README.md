@@ -7,7 +7,7 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 
 The generated PDF manual is a distribution artifact. Canonical content lives in version-controlled source.
 
-Issue #3 tracks the toolchain decision and migration.
+Issue #3 tracks the manual migration. Typst is the accepted initial toolchain; see `../docs/decisions/0001-manual-toolchain.md`.
 
 ## Requirements
 
@@ -21,4 +21,4 @@ The chosen stack must provide:
 - font-license compliance;
 - maintainability by contributors who are not publishing specialists.
 
-Typst, LaTeX, and Pandoc-based workflows will be compared before the toolchain is fixed.
+Typst is the primary publishing toolchain. LaTeX and Pandoc remain documented alternatives if a migration blocker is discovered.
