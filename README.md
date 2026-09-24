@@ -39,7 +39,7 @@ This repository follows the REUSE Specification and SPDX identifiers.
 
 ## Manual
 
-The current closed-format manual will be migrated to reproducible, text-based source. The exact publishing stack is tracked in the repository roadmap; the goal is deterministic PDF generation without making PDF the source of truth.
+The current closed-format manual is being migrated to reproducible, text-based source using Typst. PDF is a generated distribution artifact rather than the source of truth. See `docs/decisions/0001-manual-toolchain.md`.
 
 ## Contributing
 
