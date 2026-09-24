@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
-<svg fill-rule="evenodd" stroke-linejoin="round" stroke-width="28.222" preserveAspectRatio="xMidYMid" version="1.2" viewBox="999 1002 19001 10901" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:ooo="http://xml.openoffice.org/svg/export">
+<svg fill-rule="evenodd" stroke-linejoin="round" stroke-width="28.222" preserveAspectRatio="xMidYMid" version="1.2" viewBox="700 700 19600 11900" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:ooo="http://xml.openoffice.org/svg/export">
  <defs><clipPath id="a"><rect width="21000" height="12900"/></clipPath></defs>
  <g class="Slide" clip-path="url(#a)"><g class="Page">
  <path d="m8674 9044c-185-45-391-70-613-70-255 0-486 37-689 111-204 72-381 175-523 305-144 129-255 284-329 460-76 175-113 367-113 568 0 208 37 403 109 582 74 181 185 342 331 475 146 134 329 239 545 313 214 74 463 113 743 113 220 0 432-29 627-84 49-13 97-29 142-43l47-19v-699l-100 47c-21 10-44 21-66 31-64 27-132 49-200 70-70 18-142 33-216 45-74 10-148 17-224 17-162 0-313-23-442-66-128-41-237-101-323-177-86-74-152-163-197-265-48-101-70-216-70-340 0-117 22-228 65-325 44-99 109-183 194-255 84-70 191-127 317-169 127-41 275-61 440-61 68 0 137 6 207 14 72 8 140 21 206 37 66 17 128 35 185 60 43 16 82 35 117 55l107 64v-705l-45-17c-76-29-154-53-232-72z" fill="#ffffff"/>
