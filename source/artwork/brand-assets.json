@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "slug": "librecode",
+  "master": "source/artwork/librecode-master.svg",
+  "normalization": {
+    "engine": "inkscape",
+    "crop": "drawing",
+    "padding_ratio": 0.0125
+  },
+  "variants": {
+    "primary": {
+      "colors": {}
+    },
+    "reversed": {
+      "colors": {
+        "#7c7b7b": "#ffffff",
+        "#e5332a": "#ffffff"
+      }
+    },
+    "monochrome": {
+      "colors": {
+        "#7c7b7b": "#000000",
+        "#e5332a": "#000000"
+      }
+    }
+  },
+  "clear_space": {
+    "unit_ratio_to_logo_width": 0.14966083,
+    "marker": {
+      "variant": "primary",
+      "fraction": [
+        0.63395194,
+        0.7342012,
+        0.14966083,
+        0.26240408
+      ],
+      "filename": "librecode-reference-d.svg"
+    }
+  },
+  "exports": {
+    "png_widths": [
+      256,
+      512,
+      1024,
+      2048
+    ]
+  }
+}
