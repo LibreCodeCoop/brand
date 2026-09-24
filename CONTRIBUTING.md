@@ -33,3 +33,12 @@ Do not add unexplained binary files. Every binary must have:
 ## Generated files
 
 Generated PDF/PNG assets must be reproducible from tracked source whenever practical. Do not manually edit generated outputs.
+
+
+## Privacy and historical sources
+
+Do not commit raw contracts, proposals, briefs, exported office documents, or other historical files solely for provenance when they contain personal data or unrelated commercial information.
+
+Extract and document only the facts needed by the brand system. See `docs/privacy-and-provenance.md`.
+
+Before importing artwork, remove unnecessary editor metadata and confirm the correct SPDX/REUSE classification.
