@@ -23,9 +23,9 @@ The logo uses:
 
 The canonical clear-space module is **X**.
 
-For the current LibreCode mark, **X is 25% of the total mark height**. Keep at least one X above, below, to the left, and to the right of the complete official artwork.
+**X is the width of the capital D in the LibreCode wordmark.** Keep at least one X above, below, to the left, and to the right of the complete official mark.
 
-Use the canonical artwork and the manual construction diagram rather than estimating the exclusion zone by eye.
+The manual diagram is generated from the canonical artwork geometry and the D reference crop defined in `source/artwork/brand-assets.json`. Do not estimate the exclusion zone by eye.
 
 ## Minimum size
 
