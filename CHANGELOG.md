@@ -5,16 +5,17 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 
 # Changelog
 
-All notable changes to the LibreCode brand system will be documented here.
+Semantic versioning is used for tagged brand-system releases.
 
-The project intends to use semantic versioning for tagged brand-system releases:
-- PATCH: corrections without changing intended brand use;
-- MINOR: compatible additions such as approved exports or examples;
-- MAJOR: identity/rule changes that invalidate prior guidance.
+- PATCH: corrections without changing intended use.
+- MINOR: compatible additions.
+- MAJOR: changes that invalidate prior usage.
 
 ## Unreleased
 
-- Established canonical Git repository.
-- Added SPDX/REUSE licensing baseline.
-- Added naming, pronunciation, brand story, voice, accessibility, and asset conventions.
-- Selected Typst for reproducible manual generation.
+- Canonical brand repository established.
+- SPDX/REUSE compliance enabled.
+- Canonical SVG artwork added.
+- Reproducible PNG/PDF generation added.
+- Typst manual added.
+- Current naming, pronunciation, colors, typography, accessibility, and digital design-system contract defined.
