@@ -180,24 +180,23 @@
   let unit = logo-width * unit-ratio
   align(center)[
     #block(
-      width: logo-width + unit + unit,
       fill: theme.soft,
       stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed"),
-      inset: unit,
     )[
-      #place(top, dy: -unit + 1.2mm)[
-        #image(marker, height: unit * 0.78, fit: "contain", alt: marker-alt)
-      ]
-      #place(bottom, dy: unit - 1.2mm)[
-        #image(marker, height: unit * 0.78, fit: "contain", alt: marker-alt)
-      ]
-      #place(left, dx: -unit + 1.2mm)[
-        #rotate(-90deg, image(marker, height: unit * 0.78, fit: "contain", alt: marker-alt))
-      ]
-      #place(right, dx: unit - 1.2mm)[
-        #rotate(90deg, image(marker, height: unit * 0.78, fit: "contain", alt: marker-alt))
-      ]
-      #image(logo, width: logo-width, fit: "contain", alt: alt)
+      #grid(
+        columns: (unit, logo-width, unit),
+        rows: (unit, auto, unit),
+        align: center + horizon,
+        [],
+        image(marker, height: unit * 0.62, fit: "contain", alt: marker-alt),
+        [],
+        rotate(-90deg, image(marker, height: unit * 0.62, fit: "contain", alt: marker-alt)),
+        image(logo, width: logo-width, fit: "contain", alt: alt),
+        rotate(90deg, image(marker, height: unit * 0.62, fit: "contain", alt: marker-alt)),
+        [],
+        image(marker, height: unit * 0.62, fit: "contain", alt: marker-alt),
+        [],
+      )
     ]
   ]
   v(5mm)
@@ -221,26 +220,28 @@
   let unit = logo-width * unit-ratio
   align(center)[
     #block(
-      width: logo-width + unit + unit,
       fill: theme.soft,
       stroke: (paint: theme.neutral, thickness: 0.7pt),
-      inset: unit,
     )[
-      #place(top + left, dx: -unit * 0.55, dy: -unit * 0.62)[
-        #text(font: theme.heading-font, size: 12pt, weight: "medium", fill: theme.neutral)[X]
-      ]
-      #place(left + top, dx: -unit * 0.65, dy: -unit * 0.12)[
-        #text(font: theme.heading-font, size: 12pt, weight: "medium", fill: theme.neutral)[X]
-      ]
-      #place(bottom, dy: unit * 0.58)[
-        #stack(
+      #grid(
+        columns: (unit, logo-width, unit),
+        rows: (unit, auto, unit),
+        align: center + horizon,
+        [],
+        text(font: theme.heading-font, size: 12pt, weight: "medium", fill: theme.neutral)[X],
+        [],
+        text(font: theme.heading-font, size: 12pt, weight: "medium", fill: theme.neutral)[X],
+        image(logo, width: logo-width, fit: "contain", alt: alt),
+        [],
+        [],
+        stack(
           dir: ttb,
           spacing: 1mm,
           line(length: unit, stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed")),
           text(font: theme.heading-font, size: 10pt, weight: "medium", fill: theme.neutral)[X],
-        )
-      ]
-      #image(logo, width: logo-width, fit: "contain", alt: alt)
+        ),
+        [],
+      )
     ]
   ]
   v(4mm)
