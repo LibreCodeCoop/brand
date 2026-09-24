@@ -9,6 +9,8 @@ on:
     paths:
       - "manual/**"
       - "source/artwork/**"
+      - "source/fonts/**"
+      - "scripts/build_assets.py"
       - ".github/workflows/latest.yml"
   workflow_dispatch:
 
@@ -29,21 +31,19 @@ jobs:
       - uses: typst-community/setup-typst@v5
         with:
           typst-version: 0.15.1
-      - name: Install SVG renderer
+      - name: Install asset toolchain
         run: |
           sudo apt-get update
-          sudo apt-get install -y librsvg2-bin
+          sudo apt-get install -y inkscape
       - name: Build latest artifacts
         run: |
-          mkdir -p build
+          python scripts/build_assets.py --output build/assets
           typst compile --root . --font-path source/fonts --pdf-standard ua-1 manual/main.typ build/librecode-brand-manual.pdf
-          for svg in source/artwork/*.svg; do
-            name="$(basename "$svg" .svg)"
-            rsvg-convert -w 1024 -f png -o "build/$name.png" "$svg"
-            rsvg-convert -f pdf -o "build/$name.pdf" "$svg"
-            cp "$svg" "build/$name.svg"
-          done
-          sha256sum build/* > build/SHA256SUMS
+          cp build/assets/librecode-logo.svg build/librecode-logo.svg
+          cp build/assets/librecode-logo.pdf build/librecode-logo.pdf
+          cp build/assets/librecode-logo.png build/librecode-logo.png
+          cp build/assets/librecode-logo-reversed.svg build/librecode-logo-reversed.svg
+          sha256sum build/librecode-brand-manual.pdf build/librecode-logo* > build/SHA256SUMS
       - name: Move latest tag to this build
         run: |
           git tag -f latest "$GITHUB_SHA"
@@ -53,6 +53,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           if ! gh release view latest >/dev/null 2>&1; then
-            gh release create latest               --prerelease               --title "Latest brand build"               --notes "Continuously updated build from the main branch."
+            gh release create latest --prerelease --title "Latest brand build" --notes "Continuously updated build from the main branch."
           fi
-          gh release upload latest build/* --clobber
+          gh release upload latest             build/librecode-brand-manual.pdf             build/librecode-logo.svg             build/librecode-logo.pdf             build/librecode-logo.png             build/librecode-logo-reversed.svg             build/SHA256SUMS             --clobber
