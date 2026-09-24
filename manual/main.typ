@@ -72,7 +72,7 @@ Libre começa com som de /i/. Code mantém a pronúncia inglesa.
 O master canônico é `source/artwork/librecode-logo.svg`.
 
 #align(center)[
-  #image("../source/artwork/librecode-logo.svg", width: 72%)
+  #image("../source/artwork/librecode-logo.svg", width: 72%, alt: "LibreCode logo")
 ]
 
 #rule-card(
