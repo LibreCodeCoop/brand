@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: CC-BY-SA-4.0
 
 #import "theme.typ": theme
-#import "components.typ": cover, toc-page, section-page, manual-page, logo-stage, swatch, specimen, rule-pair, statement, back-cover
+#import "components.typ": cover, toc-page, section-page, manual-page, logo-stage, swatch, specimen, clear-space-diagram, rule-pair, statement, back-cover
 
 #set document(
   title: "Manual da Marca LibreCode",
@@ -174,14 +174,16 @@
     theme,
     "Space Grotesk",
     [Display e títulos],
-    [LIBRE / tecnologia com liberdade],
+    [LibreCode],
+    size: 32pt,
   )
   #v(7mm)
   #specimen(
     theme,
     "Instrument Sans",
     [Texto e informação],
-    [Uma identidade clara precisa continuar legível em uso real.],
+    [Tecnologia com liberdade],
+    size: 22pt,
   )
   #v(9mm)
 
@@ -189,23 +191,16 @@
 ]
 
 #manual-page(theme, [Sistema visual], [Área de proteção])[
-  A área de proteção deve manter a marca visualmente independente de texto, bordas e outras marcas.
+  A área de proteção impede que texto, bordas e outras marcas disputem espaço visual com a assinatura.
 
   #v(7mm)
-  #block(
-    width: 100%,
-    inset: 12mm,
-    fill: white,
-    stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed"),
-  )[
-    #align(center)[
-      #image("../source/artwork/librecode-logo.svg", width: 68%, alt: "Logo LibreCode dentro da área de proteção")
-    ]
-  ]
-  #v(4mm)
-  #align(center)[
-    #text(size: 9pt, fill: theme.neutral)[Mantenha no mínimo uma unidade *x* de respiro em todo o perímetro.]
-  ]
+  #clear-space-diagram(
+    theme,
+    "../source/artwork/librecode-logo.svg",
+    "Diagrama da área de proteção da marca LibreCode",
+    [X],
+    [*X* é definido como *25% da altura total da marca*. Preserve, no mínimo, uma unidade X acima, abaixo, à esquerda e à direita do artwork oficial.],
+  )
 ]
 
 #manual-page(theme, [Sistema visual], [Escala mínima])[
@@ -266,25 +261,6 @@
 
   Use a versão primária em fundos claros e a versão reversa em campos escuros ou saturados. Verifique sempre contraste e área de proteção.
 ]
-, [Aplicação])[
-  #grid(
-    columns: (1fr, 1fr),
-    gutter: 7mm,
-    block(fill: white, inset: 10mm, height: 64mm)[
-      #align(center + horizon)[
-        #image("../source/artwork/librecode-logo.svg", width: 78%, alt: "Logo LibreCode sobre fundo claro")
-      ]
-    ],
-    block(fill: theme.soft, inset: 10mm, height: 64mm)[
-      #align(center + horizon)[
-        #image("../source/artwork/librecode-logo.svg", width: 78%, alt: "Logo LibreCode sobre fundo cinza claro")
-      ]
-    ],
-  )
-  #v(7mm)
-
-  Antes de publicar uma nova aplicação, verifique contraste, respiro e fidelidade ao master.
-]
 
 #manual-page(theme, [Uso], [Acessibilidade])[
   - garanta contraste adequado ao papel de cada cor;
@@ -326,5 +302,6 @@
   theme,
   "../source/artwork/librecode-logo-reversed.svg",
   "Logo oficial LibreCode",
+  "https://librecode.coop/brand",
   [librecode.coop/brand],
 )
