@@ -21,9 +21,11 @@ The logo uses:
 
 ## Clear space
 
-Maintain clear space around the mark sufficient to keep it visually independent from text, borders, and other marks.
+The canonical clear-space module is **X**.
 
-The manual source contains the normative construction diagram. Do not recreate the logo by eye.
+For the current LibreCode mark, **X is 25% of the total mark height**. Keep at least one X above, below, to the left, and to the right of the complete official artwork.
+
+Use the canonical artwork and the manual construction diagram rather than estimating the exclusion zone by eye.
 
 ## Minimum size
 
