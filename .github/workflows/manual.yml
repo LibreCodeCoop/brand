@@ -1,0 +1,35 @@
+# SPDX-FileCopyrightText: 2026 LibreCode Coop contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+name: Build brand manual
+
+on:
+  push:
+    paths:
+      - "manual/**"
+      - ".github/workflows/manual.yml"
+  pull_request:
+    paths:
+      - "manual/**"
+      - ".github/workflows/manual.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: typst-community/setup-typst@v5
+        with:
+          typst-version: 0.15.1
+      - name: Build accessible PDF
+        run: |
+          mkdir -p build
+          typst compile --pdf-standard ua-1 manual/main.typ build/brand-manual.pdf
+      - uses: actions/upload-artifact@v6
+        with:
+          name: brand-manual
+          path: build/brand-manual.pdf
