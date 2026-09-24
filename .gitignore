@@ -1,0 +1,6 @@
+# SPDX-FileCopyrightText: 2026 LibreCode Coop contributors
+# SPDX-License-Identifier: CC-BY-SA-4.0
+
+/build/
+*.tmp
+.DS_Store
