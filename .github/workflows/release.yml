@@ -27,9 +27,12 @@ jobs:
         run: |
           mkdir -p build
           typst compile --root . --font-path source/fonts --pdf-standard ua-1 manual/main.typ build/librecode-brand-manual.pdf
-          rsvg-convert -w 1024 -f png -o build/librecode-logo.png source/artwork/librecode-logo.svg
-          rsvg-convert -f pdf -o build/librecode-logo.pdf source/artwork/librecode-logo.svg
-          cp source/artwork/librecode-logo.svg build/librecode-logo.svg
+          for svg in source/artwork/*.svg; do
+            name="$(basename "$svg" .svg)"
+            rsvg-convert -w 1024 -f png -o "build/$name.png" "$svg"
+            rsvg-convert -f pdf -o "build/$name.pdf" "$svg"
+            cp "$svg" "build/$name.svg"
+          done
           sha256sum build/* > build/SHA256SUMS
       - name: Create or update GitHub release
         env:
