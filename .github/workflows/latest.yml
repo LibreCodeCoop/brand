@@ -1,0 +1,55 @@
+# SPDX-FileCopyrightText: 2026 LibreCode Coop contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+name: Publish latest brand build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "manual/**"
+      - "source/artwork/**"
+      - ".github/workflows/latest.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: latest-brand-build
+  cancel-in-progress: true
+
+jobs:
+  latest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: typst-community/setup-typst@v5
+        with:
+          typst-version: 0.15.1
+      - name: Install SVG renderer
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y librsvg2-bin
+      - name: Build latest artifacts
+        run: |
+          mkdir -p build
+          typst compile --pdf-standard ua-1 manual/main.typ build/librecode-brand-manual.pdf
+          rsvg-convert -w 1024 -f png -o build/librecode-logo.png source/artwork/librecode-logo.svg
+          rsvg-convert -f pdf -o build/librecode-logo.pdf source/artwork/librecode-logo.svg
+          cp source/artwork/librecode-logo.svg build/librecode-logo.svg
+          sha256sum build/* > build/SHA256SUMS
+      - name: Move latest tag to this build
+        run: |
+          git tag -f latest "$GITHUB_SHA"
+          git push origin refs/tags/latest --force
+      - name: Publish stable latest URLs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! gh release view latest >/dev/null 2>&1; then
+            gh release create latest               --prerelease               --title "Latest brand build"               --notes "Continuously updated build from the main branch."
+          fi
+          gh release upload latest build/* --clobber
