@@ -41,3 +41,16 @@ Exam-oriented packages (examify, examy, quest, mcx, g-exam, examine-ib, exm, gra
 ## Hosted Typst service
 
 The build does not depend on Typst's proprietary web application. The open-source Apache-2.0 Typst compiler is sufficient for local and CI generation.
+
+
+## Reference implementations
+
+The following open/versioned Typst projects are design and implementation references, not runtime dependencies:
+
+- **Typst official documentation** — its documentation sources are versioned and can be compiled both as a website and as a standalone PDF. Useful reference for separating content, components, and assets.
+- **telereport** — implements an existing institutional visual identity (Télécom Paris) with configurable colors, typography, and logo placement. Useful reference for mapping a graphic charter into Typst code.
+- **metropole-report** — demonstrates disciplined type scale, baseline/spatial rhythm, generous leading, and restrained accent color.
+- **biz-report** — demonstrates expressive front/back covers, full-bleed shapes, themed callouts, and running headers.
+- **min-manual** — demonstrates a maintainable manual-oriented source structure and content-first documentation design.
+
+We borrow architectural ideas and techniques only; the LibreCode/LibreSign visual language is implemented from our own brand rules and artwork.
