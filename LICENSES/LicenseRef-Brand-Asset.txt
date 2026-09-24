@@ -1,0 +1,7 @@
+Copyright in official brand artwork is reserved pending verification of the complete rights chain.
+
+Permission is granted to copy and redistribute unmodified official brand artwork solely for truthful reference to the LibreCode / LibreCode Coop project or organization, subject to TRADEMARKS.md and without implying sponsorship, endorsement, or official status that does not exist.
+
+No permission is granted by this file to create derivative logos, confusingly similar marks, or modified artwork presented as official.
+
+Once copyright ownership and any commissioned-work assignment are fully verified, this LicenseRef may be replaced by an explicit open copyright license if approved by the rights holder.
