@@ -1,0 +1,37 @@
+# SPDX-FileCopyrightText: 2026 LibreCode Coop contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+name: Build brand assets
+
+on:
+  push:
+    paths:
+      - "source/artwork/**"
+      - ".github/workflows/assets.yml"
+  pull_request:
+    paths:
+      - "source/artwork/**"
+      - ".github/workflows/assets.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install SVG renderer
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y librsvg2-bin
+      - name: Generate approved derivatives
+        run: |
+          mkdir -p build
+          rsvg-convert -w 1024 -f png -o build/librecode-logo.png source/artwork/librecode-logo.svg
+          rsvg-convert -f pdf -o build/librecode-logo.pdf source/artwork/librecode-logo.svg
+      - uses: actions/upload-artifact@v6
+        with:
+          name: librecode-logo-derivatives
+          path: build/
