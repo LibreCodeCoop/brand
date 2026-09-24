@@ -101,7 +101,7 @@
   #logo-stage(theme, "../build/assets/librecode-logo-primary.svg", "Logo oficial LibreCode")
   #v(8mm)
 
-  O master canônico é `source/artwork/librecode-logo.svg`.
+  O master canônico é `source/artwork/librecode-master.svg`.
 
   A composição une o símbolo de nós conectados à assinatura LibreCode. O arquivo vetorial versionado é a fonte de verdade para qualquer derivação pública.
 ]
