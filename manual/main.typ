@@ -106,6 +106,31 @@
   A composição une o símbolo de nós conectados à assinatura LibreCode. O arquivo vetorial versionado é a fonte de verdade para qualquer derivação pública.
 ]
 
+#manual-page(theme, [Logo], [Construção e composição])[
+  #grid(
+    columns: (1.15fr, 0.85fr),
+    gutter: 10mm,
+    block(fill: white, inset: 10mm, height: 78mm)[
+      #align(center + horizon)[
+        #image("../source/artwork/librecode-logo.svg", width: 84%, alt: "Composição oficial do logo LibreCode")
+      ]
+    ],
+    [
+      #text(font: theme.heading-font, size: 12pt, weight: "bold", fill: theme.accent)[Símbolo]
+      #v(2mm)
+      A rede de nós é o elemento distintivo da marca.
+
+      #v(7mm)
+      #text(font: theme.heading-font, size: 12pt, weight: "bold", fill: theme.accent)[Assinatura]
+      #v(2mm)
+      O wordmark LibreCode completa a composição e não deve ser redesenhado separadamente.
+    ],
+  )
+  #v(8mm)
+
+  A relação entre símbolo e assinatura é fixa no master vetorial. Use o arquivo canônico em vez de reconstruir a composição por medidas manuais.
+]
+
 #manual-page(theme, [Logo], [Integridade da marca])[
   #rule-pair(
     theme,
@@ -213,6 +238,35 @@
 )
 
 #manual-page(theme, [Uso], [Aplicação])[
+  #grid(
+    columns: (1fr, 1fr),
+    gutter: 7mm,
+    block(fill: white, inset: 8mm, height: 58mm)[
+      #align(center + horizon)[
+        #image("../source/artwork/librecode-logo.svg", width: 78%, alt: "Logo LibreCode primário sobre fundo branco")
+      ]
+    ],
+    block(fill: theme.soft, inset: 8mm, height: 58mm)[
+      #align(center + horizon)[
+        #image("../source/artwork/librecode-logo.svg", width: 78%, alt: "Logo LibreCode primário sobre fundo cinza claro")
+      ]
+    ],
+    block(fill: theme.ink, inset: 8mm, height: 58mm)[
+      #align(center + horizon)[
+        #image("../source/artwork/librecode-logo-reversed.svg", width: 78%, alt: "Logo LibreCode reverso sobre fundo escuro")
+      ]
+    ],
+    block(fill: theme.accent, inset: 8mm, height: 58mm)[
+      #align(center + horizon)[
+        #image("../source/artwork/librecode-logo-reversed.svg", width: 78%, alt: "Logo LibreCode reverso sobre fundo vermelho")
+      ]
+    ],
+  )
+  #v(7mm)
+
+  Use a versão primária em fundos claros e a versão reversa em campos escuros ou saturados. Verifique sempre contraste e área de proteção.
+]
+, [Aplicação])[
   #grid(
     columns: (1fr, 1fr),
     gutter: 7mm,
