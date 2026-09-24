@@ -9,7 +9,7 @@ Canonical, version-controlled source for the current LibreCode brand system.
 
 Public guide: https://librecode.coop/brand
 
-Latest released manual: https://github.com/LibreCodeCoop/brand/releases/latest/download/librecode-brand-manual.pdf
+Latest released manual: https://github.com/LibreCodeCoop/brand/releases/download/latest/librecode-brand-manual.pdf
 
 ## Contract
 
