@@ -34,7 +34,7 @@
   )[
     #align(center + horizon)[
       #block(fill: white, inset: 10mm, radius: 5pt)[
-        #image(logo, width: 95mm)
+        #image(logo, width: 95mm, alt: "Official brand logo")
       ]
       #v(16mm)
       #text(size: 28pt, weight: "bold", fill: white)[#title]
