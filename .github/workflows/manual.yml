@@ -28,7 +28,7 @@ jobs:
       - name: Build accessible PDF
         run: |
           mkdir -p build
-          typst compile --pdf-standard ua-1 manual/main.typ build/brand-manual.pdf
+          typst compile --root . --pdf-standard ua-1 manual/main.typ build/brand-manual.pdf
       - uses: actions/upload-artifact@v6
         with:
           name: brand-manual
