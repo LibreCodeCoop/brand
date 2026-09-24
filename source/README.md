@@ -14,3 +14,11 @@ Store current canonical editable artwork here.
 - preserve SPDX/REUSE coverage.
 
 Third-party fonts, if vendored, must keep their upstream license.
+
+
+## Approved variants
+
+- `librecode-logo.svg` — primary full-color artwork for light/neutral backgrounds.
+- `librecode-logo-reversed.svg` — reversed white artwork for sufficiently dark backgrounds.
+
+Use the variant appropriate to the background. Do not recolor either file manually.
