@@ -153,7 +153,7 @@
   ],
 )
 
-#let specimen(theme, family, role, sample) = block(
+#let specimen(theme, family, role, sample, size: 24pt) = block(
   width: 100%,
   inset: 12pt,
   fill: white,
@@ -161,11 +161,52 @@
   stroke: (paint: theme.soft, thickness: 0.6pt),
 )[
   #text(font: theme.heading-font, size: 8pt, weight: "medium", fill: theme.accent)[#upper(role)]
-  #v(2mm)
-  #text(font: family, size: 28pt, weight: "medium", fill: theme.ink)[#sample]
-  #v(2mm)
+  #v(3mm)
+  #text(font: family, size: size, weight: "medium", fill: theme.ink)[#sample]
+  #v(3mm)
   #text(font: theme.body-font, size: 9pt, fill: theme.neutral)[#family]
 ]
+
+#let clear-space-diagram(theme, logo, alt, unit, definition) = {
+  block(
+    width: 100%,
+    fill: theme.soft,
+    stroke: (paint: theme.neutral, thickness: 0.6pt),
+    radius: 3pt,
+    inset: 0pt,
+  )[
+    #grid(
+      columns: (17mm, 1fr, 17mm),
+      rows: (15mm, 68mm, 15mm),
+      align: center + horizon,
+      [ ],
+      text(font: theme.heading-font, size: 12pt, weight: "bold", fill: theme.accent)[#unit],
+      [ ],
+      text(font: theme.heading-font, size: 12pt, weight: "bold", fill: theme.accent)[#unit],
+      block(
+        width: 100%,
+        height: 100%,
+        fill: white,
+        stroke: (paint: theme.neutral, thickness: 0.6pt),
+        inset: 10mm,
+      )[
+        #align(center + horizon)[
+          #image(logo, width: 78%, alt: alt)
+        ]
+      ],
+      text(font: theme.heading-font, size: 12pt, weight: "bold", fill: theme.accent)[#unit],
+      [ ],
+      text(font: theme.heading-font, size: 12pt, weight: "bold", fill: theme.accent)[#unit],
+      [ ],
+    )
+  ]
+  v(5mm)
+  align(center)[
+    #block(width: 128mm)[
+      #text(font: theme.body-font, size: 9pt, fill: theme.neutral)[#definition]
+    ]
+  ]
+}
 
 #let rule-pair(theme, good-title, good-body, bad-title, bad-body) = grid(
   columns: (1fr, 1fr),
@@ -201,7 +242,7 @@
   #text(font: theme.heading-font, size: 16pt, weight: "medium", fill: theme.ink)[#text-content]
 ]
 
-#let back-cover(theme, logo, alt, url) = page(
+#let back-cover(theme, logo, alt, url, label) = page(
   margin: 0pt,
   numbering: none,
   fill: theme.ink,
@@ -212,7 +253,9 @@
     #align(center)[
       #image(logo, width: 60mm, alt: alt)
       #v(10mm)
-      #text(font: theme.body-font, size: 9pt, fill: white)[#url]
+      #link(url)[
+        #text(font: theme.body-font, size: 9pt, fill: white)[#label]
+      ]
     ]
     #v(1fr)
   ]
