@@ -26,7 +26,7 @@ jobs:
       - name: Build release artifacts
         run: |
           mkdir -p build
-          typst compile --pdf-standard ua-1 manual/main.typ build/librecode-brand-manual.pdf
+          typst compile --root . --pdf-standard ua-1 manual/main.typ build/librecode-brand-manual.pdf
           rsvg-convert -w 1024 -f png -o build/librecode-logo.png source/artwork/librecode-logo.svg
           rsvg-convert -f pdf -o build/librecode-logo.pdf source/artwork/librecode-logo.svg
           cp source/artwork/librecode-logo.svg build/librecode-logo.svg
