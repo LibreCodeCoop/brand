@@ -83,11 +83,11 @@ Mudanças na camada digital não alteram automaticamente a geometria do logo ou 
 
 O manual histórico documenta:
 
-- vermelho principal: Pantone 485 C; CMYK C5 M95 Y95 K0; RGB 229 51 42; referência digital #e5332a;
+- vermelho principal: Pantone 485 C; CMYK C5 M95 Y95 K0; RGB 229 51 42; referência digital \#e5332a;
 - cinza principal: Pantone Cool Grey 9 C; CMYK C55 M45 Y45 K10; RGB 124 123 123;
 - cinza claro de apoio: Pantone Cool Grey 2 C; CMYK C15 M10 Y15 K0; RGB 219 219 219.
 
-O site atual mantém #e5332a como vermelho nominal da marca.
+O site atual mantém \#e5332a como vermelho nominal da marca.
 
 Pantone, CMYK, RGB e HEX são referências de espaços de cor diferentes. Produção impressa pode exigir prova/calibração; não se deve afirmar equivalência física perfeita entre eles.
 
