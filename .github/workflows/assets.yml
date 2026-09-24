@@ -7,10 +7,12 @@ on:
   push:
     paths:
       - "source/artwork/**"
+      - "scripts/build_assets.py"
       - ".github/workflows/assets.yml"
   pull_request:
     paths:
       - "source/artwork/**"
+      - "scripts/build_assets.py"
       - ".github/workflows/assets.yml"
   workflow_dispatch:
 
@@ -22,20 +24,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: Install SVG renderer
+      - name: Install asset toolchain
         run: |
           sudo apt-get update
-          sudo apt-get install -y librsvg2-bin
-      - name: Generate approved derivatives
-        run: |
-          mkdir -p build
-          for svg in source/artwork/*.svg; do
-            name="$(basename "$svg" .svg)"
-            rsvg-convert -w 1024 -f png -o "build/$name.png" "$svg"
-            rsvg-convert -f pdf -o "build/$name.pdf" "$svg"
-            cp "$svg" "build/$name.svg"
-          done
+          sudo apt-get install -y inkscape
+      - name: Generate brand assets
+        run: python scripts/build_assets.py --output build/assets
       - uses: actions/upload-artifact@v6
         with:
-          name: librecode-logo-derivatives
-          path: build/
+          name: librecode-brand-assets
+          path: build/assets/
