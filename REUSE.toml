@@ -4,11 +4,10 @@
 version = 1
 
 [[annotations]]
-path = ["assets/logo/**", "source/artwork/**"]
+path = ["assets/**", "source/artwork/**", "examples/**"]
 precedence = "aggregate"
-SPDX-FileCopyrightText = "NOASSERTION"
-SPDX-License-Identifier = "LicenseRef-Brand-Asset"
-
+SPDX-FileCopyrightText = "2026 LibreCode Coop contributors"
+SPDX-License-Identifier = "CC-BY-SA-4.0"
 
 [[annotations]]
 path = ["manual/**/*.pdf"]
