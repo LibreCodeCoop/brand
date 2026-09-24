@@ -11,7 +11,7 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 
 ```bash
 mkdir -p build
-typst compile --pdf-standard ua-1 manual/main.typ build/brand-manual.pdf
+typst compile --root . --pdf-standard ua-1 manual/main.typ build/brand-manual.pdf
 ```
 
 The build must remain reproducible, accessible, and free of private data.
