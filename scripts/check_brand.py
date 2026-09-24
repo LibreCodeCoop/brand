@@ -60,6 +60,44 @@ def check_svg(failures: list[str]) -> None:
             fail(f"SVG lacks viewBox: {path.relative_to(ROOT)}", failures)
 
 
+def check_artwork_contract(failures: list[str]) -> None:
+    artwork = ROOT / "source" / "artwork"
+    specs = list(artwork.glob("brand-assets.json"))
+    masters = list(artwork.glob("*-master.svg"))
+    unexpected = [
+        path for path in artwork.glob("*.svg")
+        if not path.name.endswith("-master.svg")
+    ]
+
+    if len(specs) != 1:
+        fail("Expected exactly one source/artwork/brand-assets.json", failures)
+        return
+    if len(masters) != 1:
+        fail("Expected exactly one canonical *-master.svg artwork source", failures)
+    if unexpected:
+        for path in unexpected:
+            fail(
+                f"Derived SVG must not live in source/artwork: {path.relative_to(ROOT)}",
+                failures,
+            )
+
+    import json
+    try:
+        spec = json.loads(specs[0].read_text(encoding="utf-8"))
+    except Exception as exc:
+        fail(f"Invalid brand-assets.json: {exc}", failures)
+        return
+
+    master = ROOT / spec.get("master", "")
+    if not master.is_file():
+        fail(f"Configured master does not exist: {spec.get('master')}", failures)
+    if spec.get("normalization", {}).get("crop") != "drawing":
+        fail("Asset normalization must use the drawing bounds", failures)
+    padding = spec.get("normalization", {}).get("padding_ratio")
+    if not isinstance(padding, (int, float)) or not 0 < padding < 0.05:
+        fail("padding_ratio must be a small positive value below 0.05", failures)
+
+
 def check_markdown_links(failures: list[str]) -> None:
     for path in ROOT.rglob("*.md"):
         text = path.read_text(encoding="utf-8")
@@ -84,6 +122,7 @@ def main() -> int:
     check_names(failures)
     check_duplicates(failures)
     check_svg(failures)
+    check_artwork_contract(failures)
     check_markdown_links(failures)
     if failures:
         for item in failures:
