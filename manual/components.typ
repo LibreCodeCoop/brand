@@ -34,7 +34,7 @@
       #pad(left: 24mm, right: 24mm, top: 34mm, bottom: 24mm)[
         #v(1fr)
         #align(center)[
-          #image(logo, width: 94mm, alt: alt)
+          #image(logo, width: 94mm, height: 58mm, fit: "contain", alt: alt)
           #v(18mm)
           #text(font: theme.heading-font, size: 26pt, weight: "bold", fill: white)[#title]
           #v(4mm)
@@ -134,7 +134,7 @@
   inset: 14mm,
 )[
   #align(center + horizon)[
-    #image(logo, width: 72%, alt: alt)
+    #image(logo, width: 72%, height: 55mm, fit: "contain", alt: alt)
   ]
 ]
 
@@ -167,44 +167,91 @@
   #text(font: theme.body-font, size: 9pt, fill: theme.neutral)[#family]
 ]
 
-#let clear-space-diagram(theme, logo, alt, unit, definition) = {
-  block(
-    width: 100%,
-    fill: theme.soft,
-    stroke: (paint: theme.neutral, thickness: 0.6pt),
-    radius: 3pt,
-    inset: 0pt,
-  )[
-    #grid(
-      columns: (17mm, 1fr, 17mm),
-      rows: (15mm, 68mm, 15mm),
-      align: center + horizon,
-      [ ],
-      text(font: theme.heading-font, size: 12pt, weight: "bold", fill: theme.accent)[#unit],
-      [ ],
-      text(font: theme.heading-font, size: 12pt, weight: "bold", fill: theme.accent)[#unit],
-      block(
-        width: 100%,
-        height: 100%,
-        fill: white,
-        stroke: (paint: theme.neutral, thickness: 0.6pt),
-        inset: 10mm,
-      )[
-        #align(center + horizon)[
-          #image(logo, width: 78%, alt: alt)
-        ]
-      ],
-      text(font: theme.heading-font, size: 12pt, weight: "bold", fill: theme.accent)[#unit],
-      [ ],
-      text(font: theme.heading-font, size: 12pt, weight: "bold", fill: theme.accent)[#unit],
-      [ ],
-    )
+#let clear-space-glyph(
+  theme,
+  logo,
+  alt,
+  marker,
+  marker-alt,
+  logo-width,
+  unit-ratio,
+  note,
+) = {
+  let unit = logo-width * unit-ratio
+  align(center)[
+    block(
+      width: logo-width + 2 * unit,
+      fill: theme.soft,
+      stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed"),
+      inset: unit,
+    )[
+      #place(top, dy: -unit + 1.2mm)[
+        #image(marker, height: unit * 0.78, fit: "contain", alt: marker-alt)
+      ]
+      #place(bottom, dy: unit - 1.2mm)[
+        #image(marker, height: unit * 0.78, fit: "contain", alt: marker-alt)
+      ]
+      #place(left, dx: -unit + 1.2mm)[
+        #rotate(-90deg, image(marker, height: unit * 0.78, fit: "contain", alt: marker-alt))
+      ]
+      #place(right, dx: unit - 1.2mm)[
+        #rotate(90deg, image(marker, height: unit * 0.78, fit: "contain", alt: marker-alt))
+      ]
+      #image(logo, width: logo-width, fit: "contain", alt: alt)
+    ]
   ]
   v(5mm)
   align(center)[
-    #block(width: 128mm)[
-      #text(font: theme.body-font, size: 9pt, fill: theme.neutral)[#definition]
+    #block(width: 132mm)[
+      #text(font: theme.body-font, size: 9pt, fill: theme.neutral)[#note]
     ]
+  ]
+}
+
+#let clear-space-x(
+  theme,
+  logo,
+  alt,
+  marker,
+  marker-alt,
+  logo-width,
+  unit-ratio,
+  note,
+) = {
+  let unit = logo-width * unit-ratio
+  align(center)[
+    block(
+      width: logo-width + 2 * unit,
+      fill: theme.soft,
+      stroke: (paint: theme.neutral, thickness: 0.7pt),
+      inset: unit,
+    )[
+      #place(top + left, dx: -unit * 0.55, dy: -unit * 0.62)[
+        #text(font: theme.heading-font, size: 12pt, weight: "medium", fill: theme.neutral)[X]
+      ]
+      #place(left + top, dx: -unit * 0.65, dy: -unit * 0.12)[
+        #text(font: theme.heading-font, size: 12pt, weight: "medium", fill: theme.neutral)[X]
+      ]
+      #place(bottom, dy: unit * 0.58)[
+        #stack(
+          dir: ttb,
+          spacing: 1mm,
+          line(length: unit, stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed")),
+          text(font: theme.heading-font, size: 10pt, weight: "medium", fill: theme.neutral)[X],
+        )
+      ]
+      #image(logo, width: logo-width, fit: "contain", alt: alt)
+    ]
+  ]
+  v(4mm)
+  align(center)[
+    #grid(
+      columns: (18mm, 1fr),
+      gutter: 5mm,
+      align: horizon,
+      image(marker, width: 16mm, fit: "contain", alt: marker-alt),
+      text(font: theme.body-font, size: 9pt, fill: theme.neutral)[#note],
+    )
   ]
 }
 
