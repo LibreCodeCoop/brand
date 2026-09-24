@@ -179,7 +179,7 @@
 ) = {
   let unit = logo-width * unit-ratio
   align(center)[
-    block(
+    #block(
       width: logo-width + unit + unit,
       fill: theme.soft,
       stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed"),
@@ -220,7 +220,7 @@
 ) = {
   let unit = logo-width * unit-ratio
   align(center)[
-    block(
+    #block(
       width: logo-width + unit + unit,
       fill: theme.soft,
       stroke: (paint: theme.neutral, thickness: 0.7pt),
