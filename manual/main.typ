@@ -270,7 +270,7 @@
 
 #back-cover(
   theme,
-  "../source/artwork/librecode-logo.svg",
+  "../source/artwork/librecode-logo-reversed.svg",
   "Logo oficial LibreCode",
   [librecode.coop/brand],
 )
