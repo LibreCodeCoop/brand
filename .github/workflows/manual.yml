@@ -7,10 +7,16 @@ on:
   push:
     paths:
       - "manual/**"
+      - "source/artwork/**"
+      - "source/fonts/**"
+      - "scripts/build_assets.py"
       - ".github/workflows/manual.yml"
   pull_request:
     paths:
       - "manual/**"
+      - "source/artwork/**"
+      - "source/fonts/**"
+      - "scripts/build_assets.py"
       - ".github/workflows/manual.yml"
   workflow_dispatch:
 
@@ -25,9 +31,14 @@ jobs:
       - uses: typst-community/setup-typst@v5
         with:
           typst-version: 0.15.1
+      - name: Install asset toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y inkscape
+      - name: Generate brand assets
+        run: python scripts/build_assets.py --output build/assets
       - name: Build accessible PDF
         run: |
-          mkdir -p build
           typst compile --root . --font-path source/fonts --pdf-standard ua-1 manual/main.typ build/brand-manual.pdf
       - uses: actions/upload-artifact@v6
         with:
