@@ -34,10 +34,8 @@
       #pad(left: 24mm, right: 24mm, top: 34mm, bottom: 24mm)[
         #v(1fr)
         #align(center)[
-          #block(fill: white, inset: 12mm, radius: 6pt)[
-            #image(logo, width: 92mm, alt: alt)
-          ]
-          #v(16mm)
+          #image(logo, width: 94mm, alt: alt)
+          #v(18mm)
           #text(font: theme.heading-font, size: 26pt, weight: "bold", fill: white)[#title]
           #v(4mm)
           #text(font: theme.body-font, size: 11.5pt, fill: white)[#subtitle]
