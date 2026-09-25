@@ -266,6 +266,7 @@
         )
       ]
     ],
+
     block(fill: theme.ink, inset: 8mm, height: 58mm)[
       #align(center + horizon)[
         #image(
