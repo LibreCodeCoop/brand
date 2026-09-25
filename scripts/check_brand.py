@@ -117,6 +117,49 @@ def check_markdown_links(failures: list[str]) -> None:
                 )
 
 
+
+def check_github_action_pins(failures: list[str]) -> None:
+    workflows = ROOT / ".github" / "workflows"
+    if not workflows.exists():
+        return
+
+    uses_line = re.compile(
+        r"^\s*-?\s*uses:\s*([^\s#]+)(?:\s+#\s*(\S+))?\s*$"
+    )
+    full_sha = re.compile(r"^[0-9a-f]{40}$")
+    version_comment = re.compile(r"^v\d+(?:\.\d+){0,2}(?:[-+][0-9A-Za-z.-]+)?$")
+
+    for path in workflows.glob("*.y*ml"):
+        for lineno, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+            match = uses_line.match(line)
+            if not match:
+                continue
+
+            reference, comment = match.groups()
+            if reference.startswith("./") or reference.startswith("docker://"):
+                continue
+            if "@" not in reference:
+                fail(
+                    f"GitHub Action without ref in {path.relative_to(ROOT)}:{lineno}: {reference}",
+                    failures,
+                )
+                continue
+
+            action, ref = reference.rsplit("@", 1)
+            if not full_sha.fullmatch(ref):
+                fail(
+                    f"GitHub Action must be pinned to a full commit SHA in "
+                    f"{path.relative_to(ROOT)}:{lineno}: {action}@{ref}",
+                    failures,
+                )
+            if comment is None or not version_comment.fullmatch(comment):
+                fail(
+                    f"GitHub Action pin must include a version comment such as '# v1.2.3' "
+                    f"in {path.relative_to(ROOT)}:{lineno}: {reference}",
+                    failures,
+                )
+
+
 def main() -> int:
     failures: list[str] = []
     check_names(failures)
@@ -124,6 +167,7 @@ def main() -> int:
     check_svg(failures)
     check_artwork_contract(failures)
     check_markdown_links(failures)
+    check_github_action_pins(failures)
     if failures:
         for item in failures:
             print(f"ERROR: {item}")
