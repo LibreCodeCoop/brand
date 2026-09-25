@@ -5,6 +5,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import json
 import re
 import shutil
@@ -62,6 +63,95 @@ def crop_reference(source: Path, target: Path, fraction: list[float], padding: f
     tree.write(target, encoding="unicode", xml_declaration=True)
 
 
+
+def build_clear_space_diagram(source: Path, target: Path, clear_space: dict) -> None:
+    tree = ET.parse(source)
+    source_root = tree.getroot()
+    namespace = "http://www.w3.org/2000/svg"
+    ET.register_namespace("", namespace)
+
+    def tag(name: str) -> str:
+        return f"{{{namespace}}}{name}"
+
+    x, y, width, height = [float(v) for v in source_root.attrib["viewBox"].split()]
+    unit = width * float(clear_space["unit_ratio_to_logo_width"])
+    diagram = clear_space["diagram"]
+
+    outer_x = x - unit
+    outer_y = y - unit
+    outer_width = width + 2 * unit
+    outer_height = height + 2 * unit
+
+    root = ET.Element(
+        tag("svg"),
+        {
+            "viewBox": f"{outer_x:.6f} {outer_y:.6f} {outer_width:.6f} {outer_height:.6f}",
+            "role": "img",
+            "aria-label": "Construção da área de proteção da LibreCode",
+        },
+    )
+    title = ET.SubElement(root, tag("title"))
+    title.text = "Construção da área de proteção da LibreCode"
+
+    ET.SubElement(
+        root,
+        tag("rect"),
+        {
+            "x": f"{outer_x:.6f}",
+            "y": f"{outer_y:.6f}",
+            "width": f"{outer_width:.6f}",
+            "height": f"{outer_height:.6f}",
+            "fill": diagram.get("outer_fill", "#e0e0e0"),
+            "stroke": diagram.get("stroke", "#7c7b7b"),
+            "stroke-width": "1.5",
+        },
+    )
+    ET.SubElement(
+        root,
+        tag("rect"),
+        {
+            "x": f"{x:.6f}",
+            "y": f"{y:.6f}",
+            "width": f"{width:.6f}",
+            "height": f"{height:.6f}",
+            "fill": "#ffffff",
+            "stroke": diagram.get("stroke", "#7c7b7b"),
+            "stroke-width": "1.5",
+        },
+    )
+
+    for child in source_root:
+        root.append(copy.deepcopy(child))
+
+    label_color = diagram.get("label_color", "#7c7b7b")
+    font_size = unit * 0.42
+    labels = (
+        (x + width / 2, y - unit / 2, "X"),
+        (x + width / 2, y + height + unit / 2, "X"),
+        (x - unit / 2, y + height / 2, "X"),
+        (x + width + unit / 2, y + height / 2, "X"),
+    )
+    for lx, ly, label in labels:
+        node = ET.SubElement(
+            root,
+            tag("text"),
+            {
+                "x": f"{lx:.6f}",
+                "y": f"{ly:.6f}",
+                "fill": label_color,
+                "font-family": "sans-serif",
+                "font-size": f"{font_size:.6f}",
+                "font-weight": "600",
+                "text-anchor": "middle",
+                "dominant-baseline": "middle",
+            },
+        )
+        node.text = label
+
+    target.parent.mkdir(parents=True, exist_ok=True)
+    ET.ElementTree(root).write(target, encoding="unicode", xml_declaration=True)
+
+
 def export(svg: Path, out_dir: Path, png_widths: list[int]) -> None:
     stem = svg.stem
     run("inkscape", str(svg), "--export-area-page", "--export-type=pdf", f"--export-filename={out_dir / (stem + '.pdf')}")
@@ -112,6 +202,13 @@ def main() -> int:
                     encoding="utf-8",
                 )
             export(marker_target, out_dir, [512])
+
+        clear_space = spec.get("clear_space", {})
+        diagram = clear_space.get("diagram")
+        if diagram:
+            diagram_target = out_dir / diagram["filename"]
+            build_clear_space_diagram(variants["primary"], diagram_target, clear_space)
+            export(diagram_target, out_dir, [512, 1024])
 
     primary = variants["primary"]
     for suffix in ("svg", "pdf"):
