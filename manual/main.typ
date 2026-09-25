@@ -57,6 +57,27 @@
   "section-foundations",
 )
 
+
+#manual-page(theme, [Fundamentos], [Como usar este manual])[
+  Este manual reúne as regras atuais de nome, mensagem, identidade visual, uso e governança da marca LibreCode.
+
+  #v(5mm)
+  Use-o junto com os arquivos do repositório:
+
+  - consulte `guidelines/` para regras normativas detalhadas;
+  - use somente artwork canônico ou derivados gerados por CI;
+  - trate `source/artwork/librecode-master.svg` como fonte geométrica do logo;
+  - use o PDF como guia de consulta, não como fonte para extrair ou redesenhar a marca.
+
+  #v(6mm)
+  #statement(theme, [
+    Se uma regra não estiver documentada com evidência suficiente, não a invente para preencher uma lacuna. Registre a pendência e preserve a identidade já aprovada.
+  ])
+
+  #v(5mm)
+  O escopo atual não define fotografia, ilustração, motion, campanhas, sub-marcas ou templates adicionais sem material aprovado.
+]
+
 #manual-page(theme, [Fundamentos], [Nome oficial e significado])[
   Use sempre *LibreCode* e *LibreCode Coop*.
 
@@ -186,6 +207,27 @@
   O master canônico é `source/artwork/librecode-master.svg`.
 
   A composição une o símbolo de nós conectados à assinatura LibreCode. O arquivo vetorial versionado é a fonte de verdade para qualquer derivação pública.
+]
+
+
+#manual-page(theme, [Logo], [Variantes e formatos])[
+  O sistema gera três variantes oficiais a partir do mesmo master vetorial:
+
+  - *principal*: vermelho e cinza; é a versão padrão para fundos claros;
+  - *reversa*: branca; use em fundos escuros ou saturados com contraste suficiente;
+  - *monocromática*: preta; use o arquivo oficial quando o processo exigir reprodução em uma única cor.
+
+  #v(6mm)
+  Não crie recolorações intermediárias nem redesenhe uma variante manualmente.
+
+  #v(6mm)
+  *Formatos*
+
+  - *SVG*: preferido para uso digital e escalável;
+  - *PNG*: adequado para apresentações, redes sociais e fluxos raster;
+  - *PDF*: indicado para impressão e intercâmbio vetorial quando necessário.
+
+  Os derivados públicos devem ser gerados pelo pipeline do repositório a partir do SVG canônico.
 ]
 
 #manual-page(theme, [Logo], [Construção e composição])[
