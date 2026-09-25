@@ -3,8 +3,8 @@
 
 #import "theme.typ": theme
 #import "components.typ": (
-  back-cover, cover, librecode-clear-space, logo-stage, manual-page, rule-pair, section-page, specimen, statement, swatch,
-  toc-page,
+  back-cover, cover, librecode-clear-space, logo-stage, manual-page, rule-pair, section-page, specimen, statement,
+  swatch, toc-page,
 )
 
 #set document(
@@ -216,15 +216,21 @@
   #grid(
     columns: (1fr, 1fr, 1fr),
     gutter: 7mm,
-    align(center,
-      image("../build/assets/librecode-logo-primary.svg", width: 42mm, alt: "Logo LibreCode em escala grande"),
-    ),
-    align(center,
-      image("../build/assets/librecode-logo-primary.svg", width: 30mm, alt: "Logo LibreCode em escala média"),
-    ),
-    align(center,
-      image("../build/assets/librecode-logo-primary.svg", width: 20mm, alt: "Logo LibreCode na escala mínima de impressão"),
-    ),
+    align(center, image(
+      "../build/assets/librecode-logo-primary.svg",
+      width: 42mm,
+      alt: "Logo LibreCode em escala grande",
+    )),
+    align(center, image(
+      "../build/assets/librecode-logo-primary.svg",
+      width: 30mm,
+      alt: "Logo LibreCode em escala média",
+    )),
+    align(center, image(
+      "../build/assets/librecode-logo-primary.svg",
+      width: 20mm,
+      alt: "Logo LibreCode na escala mínima de impressão",
+    )),
   )
   #v(7mm)
 
@@ -244,22 +250,38 @@
     gutter: 7mm,
     block(fill: white, inset: 8mm, height: 58mm)[
       #align(center + horizon)[
-        #image("../build/assets/librecode-logo-primary.svg", width: 78%, alt: "Logo LibreCode primário sobre fundo branco")
+        #image(
+          "../build/assets/librecode-logo-primary.svg",
+          width: 78%,
+          alt: "Logo LibreCode primário sobre fundo branco",
+        )
       ]
     ],
     block(fill: theme.soft, inset: 8mm, height: 58mm)[
       #align(center + horizon)[
-        #image("../build/assets/librecode-logo-primary.svg", width: 78%, alt: "Logo LibreCode primário sobre fundo cinza claro")
+        #image(
+          "../build/assets/librecode-logo-primary.svg",
+          width: 78%,
+          alt: "Logo LibreCode primário sobre fundo cinza claro",
+        )
       ]
     ],
     block(fill: theme.ink, inset: 8mm, height: 58mm)[
       #align(center + horizon)[
-        #image("../build/assets/librecode-logo-reversed.svg", width: 78%, alt: "Logo LibreCode reverso sobre fundo escuro")
+        #image(
+          "../build/assets/librecode-logo-reversed.svg",
+          width: 78%,
+          alt: "Logo LibreCode reverso sobre fundo escuro",
+        )
       ]
     ],
     block(fill: theme.accent, inset: 8mm, height: 58mm)[
       #align(center + horizon)[
-        #image("../build/assets/librecode-logo-reversed.svg", width: 78%, alt: "Logo LibreCode reverso sobre fundo vermelho")
+        #image(
+          "../build/assets/librecode-logo-reversed.svg",
+          width: 78%,
+          alt: "Logo LibreCode reverso sobre fundo vermelho",
+        )
       ]
     ],
   )
