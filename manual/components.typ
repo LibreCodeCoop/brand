@@ -179,40 +179,69 @@
 ) = {
   let unit = logo-width * unit-ratio
   let outer-width = logo-width + unit + unit
+  let marker-height = unit * 0.94
 
   align(center)[
-    #block(
-      width: outer-width,
-      fill: white,
-      stroke: (paint: luma(76%), thickness: 0.6pt, dash: "dashed"),
-      inset: 0pt,
-    )[
-      #place(top, dy: unit * 0.18)[
-        #image(marker, height: unit * 0.72, fit: "contain", alt: marker-alt)
-      ]
-      #place(bottom, dy: -unit * 0.18)[
-        #image(marker, height: unit * 0.72, fit: "contain", alt: marker-alt)
-      ]
-      #place(left, dx: unit * 0.18)[
-        #rotate(-90deg, image(marker, height: unit * 0.72, fit: "contain", alt: marker-alt))
-      ]
-      #place(right, dx: -unit * 0.18)[
-        #rotate(90deg, image(marker, height: unit * 0.72, fit: "contain", alt: marker-alt))
-      ]
-      #pad(
-        left: unit,
-        right: unit,
-        top: unit,
-        bottom: unit,
-      )[
-        #image(logo, width: logo-width, fit: "contain", alt: alt)
-      ]
-    ]
+    #stack(
+      dir: ttb,
+      spacing: 5mm,
+      [
+        #grid(
+          columns: (24mm, 1fr),
+          gutter: 6mm,
+          align: center + horizon,
+          block(
+            width: 22mm,
+            height: 22mm,
+            fill: white,
+            stroke: (paint: luma(82%), thickness: 0.6pt),
+          )[
+            #align(center + horizon)[
+              #image(marker, height: 15mm, fit: "contain", alt: marker-alt)
+            ]
+          ],
+          [
+            #text(font: theme.heading-font, size: 10pt, weight: "bold", fill: theme.accent)[E = módulo de proteção]
+            #v(1.5mm)
+            #text(font: theme.body-font, size: 8.7pt, fill: theme.neutral)[A própria letra E da assinatura LibreSign define a distância mínima de não interferência.]
+          ],
+        )
+      ],
+      [
+        #block(
+          width: outer-width,
+          fill: white,
+          stroke: (paint: luma(70%), thickness: 0.7pt, dash: "dashed"),
+          inset: 0pt,
+        )[
+          #place(top + center, dy: marker-height * 0.50)[
+            #image(marker, height: marker-height, fit: "contain", alt: marker-alt)
+          ]
+          #place(bottom + center, dy: -marker-height * 0.50)[
+            #rotate(180deg, image(marker, height: marker-height, fit: "contain", alt: marker-alt))
+          ]
+          #place(left + horizon, dx: marker-height * 0.50)[
+            #rotate(-90deg, image(marker, height: marker-height, fit: "contain", alt: marker-alt))
+          ]
+          #place(right + horizon, dx: -marker-height * 0.50)[
+            #rotate(90deg, image(marker, height: marker-height, fit: "contain", alt: marker-alt))
+          ]
+          #pad(
+            left: unit,
+            right: unit,
+            top: unit,
+            bottom: unit,
+          )[
+            #image(logo, width: logo-width, fit: "contain", alt: alt)
+          ]
+        ]
+      ],
+    )
   ]
 
   v(6mm)
   align(center)[
-    #block(width: 126mm)[
+    #block(width: 132mm)[
       #text(font: theme.body-font, size: 9pt, fill: theme.neutral)[#note]
     ]
   ]
@@ -222,6 +251,8 @@
   theme,
   logo,
   alt,
+  marker,
+  marker-alt,
   logo-width,
   unit-ratio,
   d-x-ratio,
@@ -234,61 +265,97 @@
   let after-d = logo-width - before-d - d-width
 
   align(center)[
-    #block(
-      fill: luma(88%),
-      stroke: (paint: theme.neutral, thickness: 0.7pt),
-      inset: 0pt,
-    )[
-      #grid(
-        columns: (unit, logo-width, unit),
-        rows: (unit, auto, unit),
-        align: center + horizon,
-        [
-          #align(center + horizon)[
-            #text(font: theme.heading-font, size: 15pt, weight: "regular", fill: luma(62%))[X]
-          ]
-        ],
-        [],
-        [],
-        [
-          #align(center + horizon)[
-            #text(font: theme.heading-font, size: 15pt, weight: "regular", fill: luma(62%))[X]
-          ]
-        ],
-        block(
-          width: logo-width,
-          fill: white,
+    #stack(
+      dir: ttb,
+      spacing: 5mm,
+      [
+        #grid(
+          columns: (24mm, 1fr),
+          gutter: 6mm,
+          align: center + horizon,
+          block(
+            width: 22mm,
+            height: 22mm,
+            fill: white,
+            stroke: (paint: luma(82%), thickness: 0.6pt),
+          )[
+            #align(center + horizon)[
+              #image(marker, width: 15mm, fit: "contain", alt: marker-alt)
+            ]
+          ],
+          [
+            #text(font: theme.heading-font, size: 10pt, weight: "bold", fill: theme.accent)[D → X]
+            #v(1.5mm)
+            #text(font: theme.body-font, size: 8.7pt, fill: theme.neutral)[A largura da letra D da assinatura define a unidade X usada em todo o perímetro.]
+          ],
+        )
+      ],
+      [
+        #block(
+          fill: luma(88%),
           stroke: (paint: theme.neutral, thickness: 0.7pt),
           inset: 0pt,
         )[
-          #image(logo, width: logo-width, fit: "contain", alt: alt)
-        ],
-        [],
-        [],
-        grid(
-          columns: (before-d, d-width, after-d),
-          rows: (unit,),
-          align: center + top,
-          [],
-          block(width: d-width, height: unit)[
-            #place(left + top)[
-              #line(length: unit * 0.62, angle: 90deg, stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed"))
-            ]
-            #place(right + top)[
-              #line(length: unit * 0.62, angle: 90deg, stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed"))
-            ]
-            #place(top, dy: unit * 0.58)[
-              #line(length: d-width, stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed"))
-            ]
-            #place(top + center, dy: unit * 0.64)[
-              #text(font: theme.heading-font, size: 12pt, weight: "regular", fill: luma(62%))[X]
-            ]
-          ],
-          [],
-        ),
-        [],
-      )
-    ]
+          #grid(
+            columns: (unit, logo-width, unit),
+            rows: (unit, auto, unit),
+            align: center + horizon,
+            [
+              #align(center + horizon)[
+                #text(font: theme.heading-font, size: 15pt, weight: "regular", fill: luma(58%))[X]
+              ]
+            ],
+            [
+              #align(center + horizon)[
+                #text(font: theme.heading-font, size: 15pt, weight: "regular", fill: luma(58%))[X]
+              ]
+            ],
+            [],
+            [
+              #align(center + horizon)[
+                #rotate(-90deg, text(font: theme.heading-font, size: 15pt, weight: "regular", fill: luma(58%))[X])
+              ]
+            ],
+            block(
+              width: logo-width,
+              fill: white,
+              stroke: (paint: theme.neutral, thickness: 0.7pt),
+              inset: 0pt,
+            )[
+              #image(logo, width: logo-width, fit: "contain", alt: alt)
+            ],
+            [
+              #align(center + horizon)[
+                #rotate(90deg, text(font: theme.heading-font, size: 15pt, weight: "regular", fill: luma(58%))[X])
+              ]
+            ],
+            [],
+            grid(
+              columns: (before-d, d-width, after-d),
+              rows: (unit,),
+              align: center + top,
+              [],
+              block(width: d-width, height: unit)[
+                #place(left + top)[
+                  #line(length: unit * 0.60, angle: 90deg, stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed"))
+                ]
+                #place(right + top)[
+                  #line(length: unit * 0.60, angle: 90deg, stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed"))
+                ]
+                #place(top, dy: unit * 0.58)[
+                  #line(length: d-width, stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed"))
+                ]
+                #place(top + center, dy: unit * 0.66)[
+                  #text(font: theme.heading-font, size: 12pt, weight: "regular", fill: luma(58%))[X]
+                ]
+              ],
+              [],
+            ),
+            [],
+          )
+        ]
+      ],
+    )
   ]
 
   v(7mm)
