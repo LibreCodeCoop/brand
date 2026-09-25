@@ -34,7 +34,11 @@
         0.14966083,
         0.26240408
       ],
-      "filename": "librecode-reference-d.svg"
+      "filename": "librecode-reference-d.svg",
+      "colors": {
+        "#7c7b7b": "#9b9b9b",
+        "#e5332a": "#9b9b9b"
+      }
     }
   },
   "exports": {
