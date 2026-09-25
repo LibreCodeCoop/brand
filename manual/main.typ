@@ -199,12 +199,10 @@
   #v(7mm)
   #librecode-clear-space(
     theme,
-    "../build/assets/librecode-logo-primary.svg",
-    "Logo LibreCode dentro da área de proteção",
+    "../build/assets/librecode-clear-space-diagram.svg",
+    "Logo LibreCode dentro da área de proteção com uma unidade X em cada lado",
     "../build/assets/librecode-reference-d.svg",
     "Letra D da assinatura LibreCode usada para derivar a unidade X",
-    92mm,
-    0.14966083,
     [*X* corresponde à largura da letra *D* em CODE. A moldura interna coincide com os limites da marca; a moldura externa acrescenta uma unidade X em cada lado.],
   )
 ]
