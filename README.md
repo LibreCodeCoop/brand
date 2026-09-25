@@ -28,5 +28,9 @@ Latest released manual: https://github.com/LibreCodeCoop/brand/releases/download
 - `assets/` — asset distribution policy.
 - `examples/` — usage examples.
 - `manual/` — Typst source.
-- `docs/` — architecture, decisions, and references.
+- `docs/` — architecture, decisions, references, and the LibreCode completion plan.
 - `LICENSES/` and `REUSE.toml` — licensing metadata.
+
+## Completion plan
+
+The implementation checklist distilled from the completed LibreSign brand work is documented in [`docs/libresign-parity-plan.md`](docs/libresign-parity-plan.md). Use it as the engineering and quality baseline while keeping all LibreCode-specific brand decisions independent.
