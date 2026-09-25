@@ -26,7 +26,6 @@ Latest released manual: https://github.com/LibreCodeCoop/brand/releases/download
 - `guidelines/` — normative brand rules.
 - `source/artwork/` — canonical editable artwork.
 - `assets/` — asset distribution policy.
-- `examples/` — usage examples.
 - `manual/` — Typst source.
 - `docs/` — architecture, decisions, references, and the LibreCode completion plan.
 - `LICENSES/` and `REUSE.toml` — licensing metadata.
