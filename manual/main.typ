@@ -14,14 +14,6 @@
 #set text(font: theme.body-font, lang: "pt", size: 10.5pt, fill: theme.ink)
 #set par(leading: 0.72em, spacing: 0.7em, justify: false)
 #set list(indent: 0pt, body-indent: 1.2em)
-#show heading.where(level: 1): it => text(
-  font: theme.heading-font,
-  size: 24pt,
-  weight: "bold",
-  fill: theme.ink,
-  it.body,
-)
-
 #cover(
   theme,
   [Manual da Marca LibreCode],
@@ -34,11 +26,11 @@
   theme,
   [Sistema da marca],
   (
-    (number: "01", title: "Fundamentos", summary: "Nome, significado e pronúncia"),
-    (number: "02", title: "Logo", summary: "Artwork canônico e composição"),
-    (number: "03", title: "Sistema visual", summary: "Cores, tipografia, proteção e escala"),
-    (number: "04", title: "Uso", summary: "Aplicações, consistência e acessibilidade"),
-    (number: "05", title: "Governança", summary: "Licenças, trademark e fonte canônica"),
+    (number: "01", title: "Fundamentos", summary: "Nome, significado e pronúncia", anchor: "section-foundations"),
+    (number: "02", title: "Logo", summary: "Artwork canônico e composição", anchor: "section-logo"),
+    (number: "03", title: "Sistema visual", summary: "Cores, tipografia, proteção e escala", anchor: "section-visual-system"),
+    (number: "04", title: "Uso", summary: "Aplicações, consistência e acessibilidade", anchor: "section-usage"),
+    (number: "05", title: "Governança", summary: "Licenças, trademark e fonte canônica", anchor: "section-governance"),
   ),
 )
 
@@ -47,6 +39,7 @@
   [01],
   [Fundamentos],
   [A marca começa pelo nome e pela ideia de liberdade que ele representa.],
+  "section-foundations",
 )
 
 #manual-page(theme, [Fundamentos], [Nome oficial e significado])[
@@ -98,6 +91,7 @@
   [02],
   [Logo],
   [O artwork oficial é um ativo técnico. Sua geometria não deve ser redesenhada ou reinterpretada.],
+  "section-logo",
 )
 
 #manual-page(theme, [Logo], [Marca principal])[
@@ -159,6 +153,7 @@
   [03],
   [Sistema visual],
   [Cor, tipografia e espaço trabalham juntos para tornar a marca reconhecível antes mesmo da leitura.],
+  "section-visual-system",
 )
 
 #manual-page(theme, [Sistema visual], [Cores])[
@@ -240,6 +235,7 @@
   [04],
   [Uso],
   [Consistência não significa rigidez: significa que a marca continua sendo reconhecível em diferentes contextos.],
+  "section-usage",
 )
 
 #manual-page(theme, [Uso], [Aplicação])[
@@ -307,6 +303,7 @@
   [05],
   [Governança],
   [A marca é um sistema público e versionado: regras, artwork e manual evoluem juntos.],
+  "section-governance",
 )
 
 #manual-page(theme, [Governança], [Licenciamento e fonte canônica])[
