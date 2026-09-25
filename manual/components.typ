@@ -178,32 +178,27 @@
   note,
 ) = {
   let unit = logo-width * unit-ratio
+  let marker-size = unit * 0.82
   let outer-width = logo-width + unit + unit
-  let marker-height = unit * 0.94
 
   align(center)[
     #stack(
       dir: ttb,
-      spacing: 5mm,
+      spacing: 7mm,
       [
         #grid(
-          columns: (24mm, 1fr),
-          gutter: 6mm,
+          columns: (22mm, 1fr),
+          gutter: 7mm,
           align: center + horizon,
-          block(
-            width: 22mm,
-            height: 22mm,
-            fill: white,
-            stroke: (paint: luma(82%), thickness: 0.6pt),
-          )[
+          block(width: 20mm, height: 20mm, fill: white)[
             #align(center + horizon)[
               #image(marker, height: 15mm, fit: "contain", alt: marker-alt)
             ]
           ],
           [
-            #text(font: theme.heading-font, size: 10pt, weight: "bold", fill: theme.accent)[E = módulo de proteção]
+            #text(font: theme.heading-font, size: 10pt, weight: "bold", fill: theme.accent)[E = clear-space module]
             #v(1.5mm)
-            #text(font: theme.body-font, size: 8.7pt, fill: theme.neutral)[A própria letra E da assinatura LibreSign define a distância mínima de não interferência.]
+            #text(font: theme.body-font, size: 8.8pt, fill: theme.neutral)[The capital E from the LibreSign wordmark defines the minimum non-interference distance.]
           ],
         )
       ],
@@ -211,27 +206,22 @@
         #block(
           width: outer-width,
           fill: white,
-          stroke: (paint: luma(70%), thickness: 0.7pt, dash: "dashed"),
+          stroke: (paint: rgb("#c2ccc8"), thickness: 0.75pt, dash: "dashed"),
           inset: 0pt,
         )[
-          #place(top + center, dy: marker-height * 0.50)[
-            #image(marker, height: marker-height, fit: "contain", alt: marker-alt)
+          #place(top + center, dy: -marker-size / 2)[
+            #image(marker, height: marker-size, fit: "contain", alt: marker-alt)
           ]
-          #place(bottom + center, dy: -marker-height * 0.50)[
-            #rotate(180deg, image(marker, height: marker-height, fit: "contain", alt: marker-alt))
+          #place(bottom + center, dy: marker-size / 2)[
+            #image(marker, height: marker-size, fit: "contain", alt: marker-alt)
           ]
-          #place(left + horizon, dx: marker-height * 0.50)[
-            #rotate(-90deg, image(marker, height: marker-height, fit: "contain", alt: marker-alt))
+          #place(left + horizon, dx: -marker-size / 2)[
+            #rotate(-90deg, image(marker, height: marker-size, fit: "contain", alt: marker-alt))
           ]
-          #place(right + horizon, dx: -marker-height * 0.50)[
-            #rotate(90deg, image(marker, height: marker-height, fit: "contain", alt: marker-alt))
+          #place(right + horizon, dx: marker-size / 2)[
+            #rotate(90deg, image(marker, height: marker-size, fit: "contain", alt: marker-alt))
           ]
-          #pad(
-            left: unit,
-            right: unit,
-            top: unit,
-            bottom: unit,
-          )[
+          #pad(left: unit, right: unit, top: unit, bottom: unit)[
             #image(logo, width: logo-width, fit: "contain", alt: alt)
           ]
         ]
@@ -255,38 +245,38 @@
   marker-alt,
   logo-width,
   unit-ratio,
-  d-x-ratio,
-  d-width-ratio,
   note,
 ) = {
   let unit = logo-width * unit-ratio
-  let before-d = logo-width * d-x-ratio
-  let d-width = logo-width * d-width-ratio
-  let after-d = logo-width - before-d - d-width
 
   align(center)[
     #stack(
       dir: ttb,
-      spacing: 5mm,
+      spacing: 8mm,
       [
         #grid(
-          columns: (24mm, 1fr),
-          gutter: 6mm,
+          columns: (26mm, 1fr),
+          gutter: 7mm,
           align: center + horizon,
-          block(
-            width: 22mm,
-            height: 22mm,
-            fill: white,
-            stroke: (paint: luma(82%), thickness: 0.6pt),
-          )[
-            #align(center + horizon)[
-              #image(marker, width: 15mm, fit: "contain", alt: marker-alt)
-            ]
+          [
+            #stack(
+              dir: ttb,
+              spacing: 1.5mm,
+              align(center)[
+                #image(marker, width: 18mm, fit: "contain", alt: marker-alt)
+              ],
+              align(center)[
+                #line(length: 18mm, stroke: (paint: theme.neutral, thickness: 0.7pt))
+              ],
+              align(center)[
+                #text(font: theme.heading-font, size: 10pt, weight: "medium", fill: theme.neutral)[X]
+              ],
+            )
           ],
           [
-            #text(font: theme.heading-font, size: 10pt, weight: "bold", fill: theme.accent)[D → X]
+            #text(font: theme.heading-font, size: 10pt, weight: "bold", fill: theme.accent)[D defines X]
             #v(1.5mm)
-            #text(font: theme.body-font, size: 8.7pt, fill: theme.neutral)[A largura da letra D da assinatura define a unidade X usada em todo o perímetro.]
+            #text(font: theme.body-font, size: 8.8pt, fill: theme.neutral)[The width of the D in CODE is the clear-space unit X.]
           ],
         )
       ],
@@ -301,19 +291,32 @@
             rows: (unit, auto, unit),
             align: center + horizon,
             [
-              #align(center + horizon)[
-                #text(font: theme.heading-font, size: 15pt, weight: "regular", fill: luma(58%))[X]
-              ]
+              #stack(
+                dir: ttb,
+                spacing: 1mm,
+                align(center)[#text(font: theme.heading-font, size: 11pt, fill: theme.neutral)[X]],
+                align(center)[#line(length: unit * 0.72, stroke: (paint: theme.neutral, thickness: 0.7pt))],
+              )
             ],
             [
               #align(center + horizon)[
-                #text(font: theme.heading-font, size: 15pt, weight: "regular", fill: luma(58%))[X]
+                #stack(
+                  dir: ttb,
+                  spacing: 1mm,
+                  line(length: unit * 0.72, angle: 90deg, stroke: (paint: theme.neutral, thickness: 0.7pt)),
+                  text(font: theme.heading-font, size: 11pt, fill: theme.neutral)[X],
+                )
               ]
             ],
             [],
             [
               #align(center + horizon)[
-                #rotate(-90deg, text(font: theme.heading-font, size: 15pt, weight: "regular", fill: luma(58%))[X])
+                #stack(
+                  dir: ttb,
+                  spacing: 1mm,
+                  line(length: unit * 0.72, angle: 90deg, stroke: (paint: theme.neutral, thickness: 0.7pt)),
+                  text(font: theme.heading-font, size: 11pt, fill: theme.neutral)[X],
+                )
               ]
             ],
             block(
@@ -326,31 +329,15 @@
             ],
             [
               #align(center + horizon)[
-                #rotate(90deg, text(font: theme.heading-font, size: 15pt, weight: "regular", fill: luma(58%))[X])
+                #text(font: theme.heading-font, size: 11pt, fill: theme.neutral)[X]
               ]
             ],
             [],
-            grid(
-              columns: (before-d, d-width, after-d),
-              rows: (unit,),
-              align: center + top,
-              [],
-              block(width: d-width, height: unit)[
-                #place(left + top)[
-                  #line(length: unit * 0.60, angle: 90deg, stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed"))
-                ]
-                #place(right + top)[
-                  #line(length: unit * 0.60, angle: 90deg, stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed"))
-                ]
-                #place(top, dy: unit * 0.58)[
-                  #line(length: d-width, stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed"))
-                ]
-                #place(top + center, dy: unit * 0.66)[
-                  #text(font: theme.heading-font, size: 12pt, weight: "regular", fill: luma(58%))[X]
-                ]
-              ],
-              [],
-            ),
+            [
+              #align(center + horizon)[
+                #text(font: theme.heading-font, size: 11pt, fill: theme.neutral)[X]
+              ]
+            ],
             [],
           )
         ]
