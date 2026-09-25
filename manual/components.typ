@@ -167,7 +167,7 @@
   #text(font: theme.body-font, size: 9pt, fill: theme.neutral)[#family]
 ]
 
-#let clear-space-glyph(
+#let libresign-clear-space(
   theme,
   logo,
   alt,
@@ -178,28 +178,39 @@
   note,
 ) = {
   let unit = logo-width * unit-ratio
+  let outer-width = logo-width + unit + unit
+
   align(center)[
     #block(
-      fill: theme.soft,
+      width: outer-width,
+      fill: white,
       stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed"),
+      inset: 0pt,
     )[
-      #grid(
-        columns: (unit, logo-width, unit),
-        rows: (unit, auto, unit),
-        align: center + horizon,
-        [],
-        image(marker, height: unit * 0.62, fit: "contain", alt: marker-alt),
-        [],
-        rotate(-90deg, image(marker, height: unit * 0.62, fit: "contain", alt: marker-alt)),
-        image(logo, width: logo-width, fit: "contain", alt: alt),
-        rotate(90deg, image(marker, height: unit * 0.62, fit: "contain", alt: marker-alt)),
-        [],
-        image(marker, height: unit * 0.62, fit: "contain", alt: marker-alt),
-        [],
-      )
+      #place(top, dy: -unit * 0.48)[
+        #image(marker, height: unit * 0.94, fit: "contain", alt: marker-alt)
+      ]
+      #place(bottom, dy: unit * 0.48)[
+        #image(marker, height: unit * 0.94, fit: "contain", alt: marker-alt)
+      ]
+      #place(left, dx: -unit * 0.48)[
+        #rotate(-90deg, image(marker, height: unit * 0.94, fit: "contain", alt: marker-alt))
+      ]
+      #place(right, dx: unit * 0.48)[
+        #rotate(90deg, image(marker, height: unit * 0.94, fit: "contain", alt: marker-alt))
+      ]
+      #pad(
+        left: unit,
+        right: unit,
+        top: unit,
+        bottom: unit,
+      )[
+        #image(logo, width: logo-width, fit: "contain", alt: alt)
+      ]
     ]
   ]
-  v(5mm)
+
+  v(6mm)
   align(center)[
     #block(width: 132mm)[
       #text(font: theme.body-font, size: 9pt, fill: theme.neutral)[#note]
@@ -207,52 +218,66 @@
   ]
 }
 
-#let clear-space-x(
+#let librecode-clear-space(
   theme,
   logo,
   alt,
-  marker,
-  marker-alt,
   logo-width,
   unit-ratio,
+  d-x-ratio,
+  d-width-ratio,
   note,
 ) = {
   let unit = logo-width * unit-ratio
+  let d-left = unit + logo-width * d-x-ratio
+  let d-width = logo-width * d-width-ratio
+
   align(center)[
     #block(
-      fill: theme.soft,
+      fill: luma(88%),
       stroke: (paint: theme.neutral, thickness: 0.7pt),
+      inset: unit,
     )[
-      #grid(
-        columns: (unit, logo-width, unit),
-        rows: (unit, auto, unit),
-        align: center + horizon,
-        [],
-        text(font: theme.heading-font, size: 12pt, weight: "medium", fill: theme.neutral)[X],
-        [],
-        text(font: theme.heading-font, size: 12pt, weight: "medium", fill: theme.neutral)[X],
-        image(logo, width: logo-width, fit: "contain", alt: alt),
-        [],
-        [],
-        stack(
-          dir: ttb,
-          spacing: 1mm,
-          line(length: unit, stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed")),
-          text(font: theme.heading-font, size: 10pt, weight: "medium", fill: theme.neutral)[X],
-        ),
-        [],
-      )
+      #place(top + left, dx: -unit * 0.58, dy: -unit * 0.63)[
+        #text(font: theme.heading-font, size: 15pt, weight: "regular", fill: luma(62%))[X]
+      ]
+      #place(left + top, dx: -unit * 0.63, dy: -unit * 0.16)[
+        #text(font: theme.heading-font, size: 15pt, weight: "regular", fill: luma(62%))[X]
+      ]
+
+      #block(
+        width: logo-width,
+        fill: white,
+        stroke: (paint: theme.neutral, thickness: 0.7pt),
+        inset: 0pt,
+      )[
+        #image(logo, width: logo-width, fit: "contain", alt: alt)
+      ]
+
+      #place(bottom + left, dx: d-left, dy: unit * 0.28)[
+        #block(width: d-width, height: unit * 0.92)[
+          #place(left + top)[
+            #line(length: unit * 0.62, angle: 90deg, stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed"))
+          ]
+          #place(right + top)[
+            #line(length: unit * 0.62, angle: 90deg, stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed"))
+          ]
+          #place(bottom)[
+            #line(length: d-width, stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed"))
+          ]
+          #place(bottom, dy: 4mm)[
+            #text(font: theme.heading-font, size: 12pt, weight: "regular", fill: luma(62%))[X]
+          ]
+        ]
+      ]
     ]
   ]
-  v(4mm)
+
+  v(7mm)
   align(center)[
-    #grid(
-      columns: (18mm, 1fr),
-      gutter: 5mm,
-      align: horizon,
-      image(marker, width: 16mm, fit: "contain", alt: marker-alt),
-      text(font: theme.body-font, size: 9pt, fill: theme.neutral)[#note],
-    )
+    #block(width: 132mm)[
+      #text(font: theme.body-font, size: 9pt, fill: theme.neutral)[#note]
+    ]
   ]
 }
 
