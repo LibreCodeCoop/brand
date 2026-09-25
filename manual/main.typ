@@ -43,7 +43,7 @@
     (
       number: "05",
       title: "Governança",
-      summary: "Licenças, marcas, terceiros e fonte canônica",
+      summary: "Licenças, marca, terceiros e fontes oficiais",
       anchor: "section-governance",
     ),
   ),
@@ -62,16 +62,11 @@
   Este manual reúne as regras atuais de nome, mensagem, identidade visual, uso e governança da marca LibreCode.
 
   #v(5mm)
-  Use-o junto com os arquivos do repositório:
-
-  - consulte `guidelines/` para regras normativas detalhadas;
-  - use somente artwork canônico ou derivados gerados por CI;
-  - trate `source/artwork/librecode-master.svg` como fonte geométrica do logo;
-  - use o PDF como guia de consulta, não como fonte para extrair ou redesenhar a marca.
+  Use os arquivos oficiais disponibilizados pela LibreCode e preserve as proporções, cores e relações apresentadas aqui. Não redesenhe o logo a partir de capturas de tela, apresentações ou versões antigas.
 
   #v(6mm)
   #statement(theme, [
-    Se uma regra não estiver documentada com evidência suficiente, não a invente para preencher uma lacuna. Registre a pendência e preserve a identidade já aprovada.
+    Quando este manual não definir uma regra, não presuma que existe uma solução oficial. Prefira registrar a necessidade e buscar uma decisão de marca antes de criar uma nova convenção.
   ])
 
   #v(5mm)
@@ -204,9 +199,7 @@
   #logo-stage(theme, "../build/assets/librecode-logo-primary.svg", "Logo oficial LibreCode")
   #v(8mm)
 
-  O master canônico é `source/artwork/librecode-master.svg`.
-
-  A composição une o símbolo de nós conectados à assinatura LibreCode. O arquivo vetorial versionado é a fonte de verdade para qualquer derivação pública.
+  A composição oficial une o símbolo de nós conectados à assinatura LibreCode. Use sempre os arquivos oficiais da marca; não reconstrua a composição manualmente.
 ]
 
 
@@ -227,7 +220,7 @@
   - *PNG*: adequado para apresentações, redes sociais e fluxos raster;
   - *PDF*: indicado para impressão e intercâmbio vetorial quando necessário.
 
-  Os derivados públicos devem ser gerados pelo pipeline do repositório a partir do SVG canônico.
+  Use os arquivos oficiais correspondentes ao formato necessário. Não converta ou redesenhe uma versão para criar uma variante visual diferente.
 ]
 
 #manual-page(theme, [Logo], [Construção e composição])[
@@ -312,7 +305,7 @@
   )
   #v(9mm)
 
-  As fontes são distribuídas no repositório sob SIL Open Font License 1.1 e usadas diretamente no build do manual.
+  Space Grotesk e Instrument Sans são fontes abertas distribuídas sob SIL Open Font License 1.1.
 ]
 
 #manual-page(theme, [Sistema visual], [Área de proteção])[
@@ -322,10 +315,8 @@
   #librecode-clear-space(
     theme,
     "../build/assets/librecode-clear-space-diagram.svg",
-    "Logo LibreCode dentro da área de proteção com uma unidade X em cada lado",
-    "../build/assets/librecode-reference-d.svg",
-    "Letra D da assinatura LibreCode usada para derivar a unidade X",
-    [*X* corresponde à largura da letra *D* em CODE. A moldura interna coincide com os limites da marca; a moldura externa acrescenta uma unidade X em cada lado.],
+    "Construção da área de proteção da LibreCode com a letra D como módulo e cópias rotacionadas acima e abaixo da marca",
+    [*X* corresponde à largura da letra *D* em CODE. As quatro letras cinza mostram como esse mesmo módulo determina a distância mínima ao redor da marca.],
   )
 ]
 
@@ -413,6 +404,77 @@
 ]
 
 
+#manual-page(theme, [Uso], [Uso correto e incorreto])[
+  Regras visuais ficam mais claras quando o uso correto aparece ao lado do erro.
+
+  #v(6mm)
+  #rule-pair(
+    theme,
+    [CORRETO],
+    [
+      #align(center)[
+        #image(
+          "../build/assets/librecode-logo-primary.svg",
+          width: 72%,
+          alt: "Logo LibreCode correto, sem alterações",
+        )
+      ]
+      #v(4mm)
+      Use o arquivo oficial nas proporções originais e preserve a área de proteção.
+    ],
+    [NÃO ROTACIONE],
+    [
+      #align(center)[
+        #rotate(8deg)[
+          #image(
+            "../build/assets/librecode-logo-primary.svg",
+            width: 72%,
+            alt: "Exemplo incorreto do logo LibreCode rotacionado",
+          )
+        ]
+      ]
+      #v(4mm)
+      Não rotacione, incline, distorça ou reorganize a marca.
+    ],
+  )
+  #v(7mm)
+  #rule-pair(
+    theme,
+    [ÁREA LIVRE],
+    [
+      #block(fill: white, inset: 8mm)[
+        #align(center)[
+          #image(
+            "../build/assets/librecode-logo-primary.svg",
+            width: 72%,
+            alt: "Logo LibreCode com espaço livre ao redor",
+          )
+        ]
+      ]
+      #v(4mm)
+      Mantenha texto, bordas e outras marcas fora da área de proteção.
+    ],
+    [NÃO APERTE],
+    [
+      #block(fill: white, inset: 1mm)[
+        #grid(
+          columns: (1fr, auto),
+          gutter: 1mm,
+          align: center + horizon,
+          image(
+            "../build/assets/librecode-logo-primary.svg",
+            width: 100%,
+            alt: "Logo LibreCode com texto colocado perto demais",
+          ),
+          text(font: theme.heading-font, size: 9pt, weight: "bold", fill: theme.ink)[PARCEIRO],
+        )
+      ]
+      #v(4mm)
+      Não coloque outros elementos dentro do espaço mínimo exigido.
+    ],
+  )
+]
+
 #manual-page(theme, [Uso], [Voz e tom])[
   A LibreCode deve soar *tecnicamente competente, transparente, cooperativa e precisa*.
 
@@ -480,34 +542,31 @@
   ])
 ]
 
-#manual-page(theme, [Governança], [Propriedade e decisões])[
-  Este repositório é a fonte canônica do sistema de marca. Regras, artwork, fontes, manual, licenças e automação evoluem por histórico versionado.
+#manual-page(theme, [Governança], [Marca, propriedade e decisões])[
+  A identidade LibreCode reúne nome, logo, cores, tipografia e regras de uso. Mudanças nesses elementos devem ser deliberadas e aprovadas antes de serem apresentadas como oficiais.
 
-  Direitos autorais e direitos de marca são assuntos diferentes. A licença de um arquivo não concede automaticamente permissão para sugerir afiliação, endosso ou caráter oficial.
+  Direitos autorais e direitos de marca são assuntos diferentes. As licenças dos materiais permitem os usos previstos em seus termos, mas não autorizam apresentar uma versão modificada, produto ou serviço independente como oficial da LibreCode.
 
   #v(6mm)
   A marca mista LibreCode está registrada no INPI sob o processo *923172475*, na classe *42*. O registro foi concedido em *31/05/2022* e o certificado informa vigência até *31/05/2032*.
 
-  O titular registrado pelo INPI é *LYSEON TECH COOPERATIVA DE TRABALHO E SOLUÇÕES TECNOLÓGICAS*. Os dados públicos verificados ficam em `docs/registrations.md`; informações administrativas desnecessárias não são reproduzidas.
-
-  #v(6mm)
-  Alterações que mudem nome, logo, cores centrais, tipografia oficial, posicionamento ou outras regras normativas exigem uma decisão explícita de marca; não devem surgir como efeito colateral de manutenção técnica.
+  O titular registrado pelo INPI é *LYSEON TECH COOPERATIVA DE TRABALHO E SOLUÇÕES TECNOLÓGICAS*.
 ]
 
-#manual-page(theme, [Governança], [Licenciamento e fonte canônica])[
+#manual-page(theme, [Governança], [Licenciamento e fontes oficiais])[
   - documentação e artwork oficial: *CC BY-SA 4.0*;
-  - automação: *AGPL-3.0-or-later*;
+  - automação e ferramentas de publicação: *AGPL-3.0-or-later*;
   - fontes: *SIL Open Font License 1.1*;
-  - trademark: regras separadas em `TRADEMARKS.md`.
+  - direitos de marca: tratados separadamente das licenças autorais.
 
   #v(8mm)
-  Fonte canônica:
-
-  https://github.com/LibreCodeCoop/brand
-
-  Guia público:
+  Guia público e downloads oficiais:
 
   https://librecode.coop/brand
+
+  Arquivos-fonte públicos da marca:
+
+  https://github.com/LibreCodeCoop/brand
 ]
 
 #back-cover(

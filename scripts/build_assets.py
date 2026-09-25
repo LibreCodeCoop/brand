@@ -49,22 +49,7 @@ def normalize_svg(source: Path, target: Path, padding: float) -> None:
         tree.write(target, encoding="unicode", xml_declaration=True)
 
 
-def crop_reference(source: Path, target: Path, fraction: list[float], padding: float = 0.025) -> None:
-    tree = ET.parse(source)
-    root = tree.getroot()
-    x, y, w, h = [float(v) for v in root.attrib["viewBox"].split()]
-    fx, fy, fw, fh = fraction
-    cx, cy, cw, ch = x + w * fx, y + h * fy, w * fw, h * fh
-    pad = min(cw, ch) * padding
-    root.set("viewBox", f"{cx-pad:.6f} {cy-pad:.6f} {cw+2*pad:.6f} {ch+2*pad:.6f}")
-    root.attrib.pop("width", None)
-    root.attrib.pop("height", None)
-    target.parent.mkdir(parents=True, exist_ok=True)
-    tree.write(target, encoding="unicode", xml_declaration=True)
-
-
-
-def build_clear_space_diagram(source: Path, target: Path, clear_space: dict) -> None:
+def build_clear_space_diagram(source: Path, target: Path, diagram: dict) -> None:
     tree = ET.parse(source)
     source_root = tree.getroot()
     namespace = "http://www.w3.org/2000/svg"
@@ -73,19 +58,39 @@ def build_clear_space_diagram(source: Path, target: Path, clear_space: dict) -> 
     def tag(name: str) -> str:
         return f"{{{namespace}}}{name}"
 
-    x, y, width, height = [float(v) for v in source_root.attrib["viewBox"].split()]
-    unit = width * float(clear_space["unit_ratio_to_logo_width"])
-    diagram = clear_space["diagram"]
+    highlight = diagram["highlight"]
+    matches = [
+        element
+        for element in source_root.iter()
+        if element.attrib.get(highlight["attribute"]) == highlight["value"]
+    ]
+    if len(matches) != 1:
+        raise ValueError(
+            "Expected exactly one clear-space reference glyph, "
+            f"found {len(matches)} for {highlight['attribute']}={highlight['value']!r}"
+        )
 
-    outer_x = x - unit
-    outer_y = y - unit
-    outer_width = width + 2 * unit
-    outer_height = height + 2 * unit
+    marker_x, marker_y, marker_width, marker_height = [
+        float(value) for value in diagram["marker_bbox"]
+    ]
+    contacts = {
+        side: tuple(float(value) for value in point)
+        for side, point in diagram["contacts"].items()
+    }
+
+    # LibreCode defines X as the width of the capital D in CODE.
+    unit = marker_width
+    left_x = contacts["left"][0] - unit
+    right_x = contacts["right"][0] + unit
+    top_y = contacts["top"][1] - unit
+    bottom_y = contacts["bottom"][1] + unit
+    canvas_width = right_x - left_x
+    canvas_height = bottom_y - top_y
 
     root = ET.Element(
         tag("svg"),
         {
-            "viewBox": f"{outer_x:.6f} {outer_y:.6f} {outer_width:.6f} {outer_height:.6f}",
+            "viewBox": f"{left_x:.6f} {top_y:.6f} {canvas_width:.6f} {canvas_height:.6f}",
             "role": "img",
             "aria-label": "Construção da área de proteção da LibreCode",
         },
@@ -97,60 +102,81 @@ def build_clear_space_diagram(source: Path, target: Path, clear_space: dict) -> 
         root,
         tag("rect"),
         {
-            "x": f"{outer_x:.6f}",
-            "y": f"{outer_y:.6f}",
-            "width": f"{outer_width:.6f}",
-            "height": f"{outer_height:.6f}",
-            "fill": diagram.get("outer_fill", "#e0e0e0"),
-            "stroke": diagram.get("stroke", "#7c7b7b"),
-            "stroke-width": "1.5",
+            "x": f"{left_x:.6f}",
+            "y": f"{top_y:.6f}",
+            "width": f"{canvas_width:.6f}",
+            "height": f"{canvas_height:.6f}",
+            "fill": "#ffffff",
         },
     )
     ET.SubElement(
         root,
         tag("rect"),
         {
-            "x": f"{x:.6f}",
-            "y": f"{y:.6f}",
-            "width": f"{width:.6f}",
-            "height": f"{height:.6f}",
-            "fill": "#ffffff",
-            "stroke": diagram.get("stroke", "#7c7b7b"),
-            "stroke-width": "1.5",
+            "x": f"{left_x:.6f}",
+            "y": f"{top_y:.6f}",
+            "width": f"{canvas_width:.6f}",
+            "height": f"{canvas_height:.6f}",
+            "fill": "none",
+            "stroke": diagram.get("boundary_color", "#b5b5b5"),
+            "stroke-width": "40",
+            "stroke-dasharray": "180 140",
         },
     )
 
+    logo_group = ET.SubElement(root, tag("g"))
     for child in source_root:
-        root.append(copy.deepcopy(child))
+        cloned = copy.deepcopy(child)
+        for element in cloned.iter():
+            if element.attrib.get(highlight["attribute"]) == highlight["value"]:
+                element.set("fill", highlight["color"])
+        logo_group.append(cloned)
 
-    label_color = diagram.get("label_color", "#7c7b7b")
-    font_size = unit * 0.42
-    labels = (
-        (x + width / 2, y - unit / 2, "X"),
-        (x + width / 2, y + height + unit / 2, "X"),
-        (x - unit / 2, y + height / 2, "X"),
-        (x + width + unit / 2, y + height / 2, "X"),
+    marker_source = matches[0]
+    marker_color = diagram.get("marker_color", "#b5b5b5")
+
+    def add_marker(matrix: str) -> None:
+        marker = copy.deepcopy(marker_source)
+        marker.set("fill", marker_color)
+        group = ET.SubElement(root, tag("g"), {"transform": matrix})
+        group.append(marker)
+
+    # Left and right use the D in its normal orientation because X is its width.
+    left_contact_x, left_y = contacts["left"]
+    add_marker(
+        "matrix(1 0 0 1 "
+        f"{left_contact_x - unit - marker_x:.6f} "
+        f"{left_y - marker_height / 2 - marker_y:.6f})"
     )
-    for lx, ly, label in labels:
-        node = ET.SubElement(
-            root,
-            tag("text"),
-            {
-                "x": f"{lx:.6f}",
-                "y": f"{ly:.6f}",
-                "fill": label_color,
-                "font-family": "sans-serif",
-                "font-size": f"{font_size:.6f}",
-                "font-weight": "600",
-                "text-anchor": "middle",
-                "dominant-baseline": "middle",
-            },
-        )
-        node.text = label
+
+    right_contact_x, right_y = contacts["right"]
+    add_marker(
+        "matrix(1 0 0 1 "
+        f"{right_contact_x - marker_x:.6f} "
+        f"{right_y - marker_height / 2 - marker_y:.6f})"
+    )
+
+    # Top and bottom rotate the same reference D so its width remains exactly X.
+    top_x, top_contact_y = contacts["top"]
+    top_translate_x = top_x + marker_height / 2
+    top_translate_y = top_contact_y - unit
+    add_marker(
+        "matrix(0 1 -1 0 "
+        f"{top_translate_x + marker_y:.6f} "
+        f"{top_translate_y - marker_x:.6f})"
+    )
+
+    bottom_x, bottom_contact_y = contacts["bottom"]
+    bottom_translate_x = bottom_x - marker_height / 2
+    bottom_translate_y = bottom_contact_y + unit
+    add_marker(
+        "matrix(0 -1 1 0 "
+        f"{bottom_translate_x - marker_y:.6f} "
+        f"{bottom_translate_y + marker_x:.6f})"
+    )
 
     target.parent.mkdir(parents=True, exist_ok=True)
     ET.ElementTree(root).write(target, encoding="unicode", xml_declaration=True)
-
 
 def export(svg: Path, out_dir: Path, png_widths: list[int]) -> None:
     stem = svg.stem
@@ -191,23 +217,10 @@ def main() -> int:
             variants[name] = target
             export(target, out_dir, spec["exports"]["png_widths"])
 
-        marker = spec.get("clear_space", {}).get("marker")
-        if marker:
-            marker_target = out_dir / marker["filename"]
-            crop_reference(variants[marker["variant"]], marker_target, marker["fraction"])
-            marker_colors = marker.get("colors", {})
-            if marker_colors:
-                marker_target.write_text(
-                    recolor(marker_target.read_text(encoding="utf-8"), marker_colors),
-                    encoding="utf-8",
-                )
-            export(marker_target, out_dir, [512])
-
-        clear_space = spec.get("clear_space", {})
-        diagram = clear_space.get("diagram")
+        diagram = spec.get("clear_space", {}).get("diagram")
         if diagram:
             diagram_target = out_dir / diagram["filename"]
-            build_clear_space_diagram(variants["primary"], diagram_target, clear_space)
+            build_clear_space_diagram(master, diagram_target, diagram)
             export(diagram_target, out_dir, [512, 1024])
 
     primary = variants["primary"]

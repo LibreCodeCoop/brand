@@ -26,25 +26,39 @@
   },
   "clear_space": {
     "unit_ratio_to_logo_width": 0.14966083,
-    "marker": {
-      "variant": "primary",
-      "fraction": [
-        0.63395194,
-        0.7342012,
-        0.14966083,
-        0.26240408
-      ],
-      "filename": "librecode-reference-d.svg",
-      "colors": {
-        "#7c7b7b": "#9b9b9b",
-        "#e5332a": "#9b9b9b"
-      }
-    },
     "diagram": {
       "filename": "librecode-clear-space-diagram.svg",
-      "outer_fill": "#e0e0e0",
-      "stroke": "#7c7b7b",
-      "label_color": "#7c7b7b"
+      "highlight": {
+        "attribute": "id",
+        "value": "librecode-clear-space-d",
+        "color": "#e5332a"
+      },
+      "marker_bbox": [
+        13046,
+        9007,
+        2843,
+        2859
+      ],
+      "marker_color": "#b5b5b5",
+      "boundary_color": "#b5b5b5",
+      "contacts": {
+        "top": [
+          8688,
+          1002.686348
+        ],
+        "bottom": [
+          11007,
+          11903
+        ],
+        "left": [
+          999.820382,
+          5965.5
+        ],
+        "right": [
+          20000,
+          7466
+        ]
+      }
     }
   },
   "exports": {
