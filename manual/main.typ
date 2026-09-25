@@ -486,7 +486,9 @@
   Direitos autorais e direitos de marca são assuntos diferentes. A licença de um arquivo não concede automaticamente permissão para sugerir afiliação, endosso ou caráter oficial.
 
   #v(6mm)
-  O registro de marca só deve aparecer no manual com número de processo, classes, titularidade e situação quando houver evidência oficial verificada. Enquanto isso não existir no repositório, esses dados permanecem deliberadamente ausentes.
+  A marca mista LibreCode está registrada no INPI sob o processo *923172475*, na classe *42*. O registro foi concedido em *31/05/2022* e o certificado informa vigência até *31/05/2032*.
+
+  O titular registrado pelo INPI é *LYSEON TECH COOPERATIVA DE TRABALHO E SOLUÇÕES TECNOLÓGICAS*. Os dados públicos verificados ficam em `docs/registrations.md`; informações administrativas desnecessárias não são reproduzidas.
 
   #v(6mm)
   Alterações que mudem nome, logo, cores centrais, tipografia oficial, posicionamento ou outras regras normativas exigem uma decisão explícita de marca; não devem surgir como efeito colateral de manutenção técnica.

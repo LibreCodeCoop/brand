@@ -25,4 +25,12 @@ The names and official marks of LibreCode and LibreCode Coop may be used truthfu
 - alter official artwork and present the result as an official mark;
 - use the marks in a deceptive or misleading way.
 
+## Registered mark
+
+The LibreCode mixed mark is registered with the Brazilian National Institute of Industrial Property (INPI) under process **923172475**, Nice class **42**. The registration was granted on **31 May 2022** and the certificate records validity through **31 May 2032**.
+
+The holder recorded by INPI is **LYSEON TECH COOPERATIVA DE TRABALHO E SOLUÇÕES TECNOLÓGICAS**.
+
+See `docs/registrations.md` for the verified public registration facts.
+
 Questions about uses outside these rules should be directed to the project's public contact channel.
