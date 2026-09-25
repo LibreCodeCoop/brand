@@ -49,21 +49,6 @@ def normalize_svg(source: Path, target: Path, padding: float) -> None:
         tree.write(target, encoding="unicode", xml_declaration=True)
 
 
-def crop_reference(source: Path, target: Path, fraction: list[float], padding: float = 0.025) -> None:
-    tree = ET.parse(source)
-    root = tree.getroot()
-    x, y, w, h = [float(v) for v in root.attrib["viewBox"].split()]
-    fx, fy, fw, fh = fraction
-    cx, cy, cw, ch = x + w * fx, y + h * fy, w * fw, h * fh
-    pad = min(cw, ch) * padding
-    root.set("viewBox", f"{cx-pad:.6f} {cy-pad:.6f} {cw+2*pad:.6f} {ch+2*pad:.6f}")
-    root.attrib.pop("width", None)
-    root.attrib.pop("height", None)
-    target.parent.mkdir(parents=True, exist_ok=True)
-    tree.write(target, encoding="unicode", xml_declaration=True)
-
-
-
 def build_clear_space_diagram(source: Path, target: Path, diagram: dict) -> None:
     tree = ET.parse(source)
     source_root = tree.getroot()
