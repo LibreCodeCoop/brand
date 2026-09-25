@@ -184,20 +184,20 @@
     #block(
       width: outer-width,
       fill: white,
-      stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed"),
+      stroke: (paint: luma(76%), thickness: 0.6pt, dash: "dashed"),
       inset: 0pt,
     )[
-      #place(top, dy: -unit * 0.48)[
-        #image(marker, height: unit * 0.94, fit: "contain", alt: marker-alt)
+      #place(top, dy: unit * 0.18)[
+        #image(marker, height: unit * 0.72, fit: "contain", alt: marker-alt)
       ]
-      #place(bottom, dy: unit * 0.48)[
-        #image(marker, height: unit * 0.94, fit: "contain", alt: marker-alt)
+      #place(bottom, dy: -unit * 0.18)[
+        #image(marker, height: unit * 0.72, fit: "contain", alt: marker-alt)
       ]
-      #place(left, dx: -unit * 0.48)[
-        #rotate(-90deg, image(marker, height: unit * 0.94, fit: "contain", alt: marker-alt))
+      #place(left, dx: unit * 0.18)[
+        #rotate(-90deg, image(marker, height: unit * 0.72, fit: "contain", alt: marker-alt))
       ]
-      #place(right, dx: unit * 0.48)[
-        #rotate(90deg, image(marker, height: unit * 0.94, fit: "contain", alt: marker-alt))
+      #place(right, dx: -unit * 0.18)[
+        #rotate(90deg, image(marker, height: unit * 0.72, fit: "contain", alt: marker-alt))
       ]
       #pad(
         left: unit,
@@ -212,7 +212,7 @@
 
   v(6mm)
   align(center)[
-    #block(width: 132mm)[
+    #block(width: 126mm)[
       #text(font: theme.body-font, size: 9pt, fill: theme.neutral)[#note]
     ]
   ]
@@ -234,38 +234,38 @@
 
   align(center)[
     #block(
-      fill: luma(88%),
-      stroke: (paint: theme.neutral, thickness: 0.7pt),
+      fill: luma(90%),
+      stroke: (paint: luma(55%), thickness: 0.6pt),
       inset: unit,
     )[
-      #place(top + left, dx: -unit * 0.58, dy: -unit * 0.63)[
+      #place(top + left, dx: -unit * 0.58, dy: -unit * 0.72)[
         #text(font: theme.heading-font, size: 15pt, weight: "regular", fill: luma(62%))[X]
       ]
-      #place(left + top, dx: -unit * 0.63, dy: -unit * 0.16)[
+      #place(left + top, dx: -unit * 0.72, dy: -unit * 0.08)[
         #text(font: theme.heading-font, size: 15pt, weight: "regular", fill: luma(62%))[X]
       ]
 
       #block(
         width: logo-width,
         fill: white,
-        stroke: (paint: theme.neutral, thickness: 0.7pt),
+        stroke: (paint: luma(55%), thickness: 0.6pt),
         inset: 0pt,
       )[
         #image(logo, width: logo-width, fit: "contain", alt: alt)
       ]
 
-      #place(bottom + left, dx: d-left, dy: unit * 0.28)[
-        #block(width: d-width, height: unit * 0.92)[
+      #place(bottom + left, dx: d-left, dy: unit * 0.20)[
+        #block(width: d-width, height: unit * 1.05)[
           #place(left + top)[
-            #line(length: unit * 0.62, angle: 90deg, stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed"))
+            #line(length: unit * 0.72, angle: 90deg, stroke: (paint: luma(55%), thickness: 0.6pt, dash: "dashed"))
           ]
           #place(right + top)[
-            #line(length: unit * 0.62, angle: 90deg, stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed"))
+            #line(length: unit * 0.72, angle: 90deg, stroke: (paint: luma(55%), thickness: 0.6pt, dash: "dashed"))
           ]
           #place(bottom)[
-            #line(length: d-width, stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed"))
+            #line(length: d-width, stroke: (paint: luma(55%), thickness: 0.6pt, dash: "dashed"))
           ]
-          #place(bottom, dy: 4mm)[
+          #place(bottom, dy: 4.2mm)[
             #text(font: theme.heading-font, size: 12pt, weight: "regular", fill: luma(62%))[X]
           ]
         ]
@@ -275,7 +275,7 @@
 
   v(7mm)
   align(center)[
-    #block(width: 132mm)[
+    #block(width: 126mm)[
       #text(font: theme.body-font, size: 9pt, fill: theme.neutral)[#note]
     ]
   ]
