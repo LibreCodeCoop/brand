@@ -39,6 +39,12 @@
         "#7c7b7b": "#9b9b9b",
         "#e5332a": "#9b9b9b"
       }
+    },
+    "diagram": {
+      "filename": "librecode-clear-space-diagram.svg",
+      "outer_fill": "#e0e0e0",
+      "stroke": "#7c7b7b",
+      "label_color": "#7c7b7b"
     }
   },
   "exports": {
