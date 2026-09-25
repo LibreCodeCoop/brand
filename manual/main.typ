@@ -2,7 +2,10 @@
 // SPDX-License-Identifier: CC-BY-SA-4.0
 
 #import "theme.typ": theme
-#import "components.typ": (\n  back-cover, cover, librecode-clear-space, logo-stage, manual-page, rule-pair, section-page, specimen, statement, swatch,\n  toc-page,\n)
+#import "components.typ": (
+  back-cover, cover, librecode-clear-space, logo-stage, manual-page, rule-pair, section-page, specimen, statement, swatch,
+  toc-page,
+)
 
 #set document(
   title: "Manual da Marca LibreCode",
