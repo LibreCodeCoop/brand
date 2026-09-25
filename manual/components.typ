@@ -183,54 +183,31 @@
   theme,
   diagram,
   alt,
-  marker,
-  marker-alt,
   note,
 ) = {
   align(center)[
-    #stack(
-      dir: ttb,
-      spacing: 8mm,
-      [
-        #grid(
-          columns: (26mm, 1fr),
-          gutter: 7mm,
-          align: center + horizon,
-          [
-            #stack(
-              dir: ttb,
-              spacing: 1.5mm,
-              align(center)[
-                #image(marker, width: 18mm, fit: "contain", alt: marker-alt)
-              ],
-              align(center)[
-                #line(length: 18mm, stroke: (paint: theme.neutral, thickness: 0.7pt))
-              ],
-              align(center)[
-                #text(font: theme.heading-font, size: 10pt, weight: "medium", fill: theme.neutral)[X]
-              ],
-            )
-          ],
-          [
-            #text(font: theme.heading-font, size: 10pt, weight: "bold", fill: theme.accent)[D define X]
-            #v(1.5mm)
-            #text(
-              font: theme.body-font,
-              size: 8.8pt,
-              fill: theme.neutral,
-            )[A largura da letra D em CODE é a unidade X da área de proteção.]
-          ],
-        )
-      ],
-      [
-        #image(diagram, width: 132mm, fit: "contain", alt: alt)
-      ],
-    )
+    #text(
+      font: theme.heading-font,
+      size: 9.5pt,
+      weight: "bold",
+      fill: theme.accent,
+    )[D = módulo de proteção]
+    #v(1.5mm)
+    #text(
+      font: theme.body-font,
+      size: 8.5pt,
+      fill: theme.neutral,
+    )[O D destacado em CODE é a letra usada como referência. A mesma letra é rotacionada nas margens superior e inferior.]
+    #v(6mm)
+
+    // A geometria técnica é gerada a partir do logo oficial.
+    // O Typst apenas posiciona o diagrama vetorial pronto.
+    #image(diagram, width: 126mm, fit: "contain", alt: alt)
   ]
 
-  v(7mm)
+  v(6mm)
   align(center)[
-    #block(width: 132mm)[
+    #block(width: 128mm)[
       #text(font: theme.body-font, size: 9pt, fill: theme.neutral)[#note]
     ]
   ]
