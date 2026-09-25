@@ -202,8 +202,6 @@
     "Letra D da assinatura LibreCode usada para derivar a unidade X",
     92mm,
     0.14966083,
-    0.63395194,
-    0.14966083,
     [*X* corresponde à largura da letra *D* em CODE. A moldura interna coincide com os limites da marca; a moldura externa acrescenta uma unidade X em cada lado.],
   )
 ]
