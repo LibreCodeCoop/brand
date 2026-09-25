@@ -169,16 +169,12 @@
 
 #let librecode-clear-space(
   theme,
-  logo,
+  diagram,
   alt,
   marker,
   marker-alt,
-  logo-width,
-  unit-ratio,
   note,
 ) = {
-  let unit = logo-width * unit-ratio
-
   align(center)[
     #stack(
       dir: ttb,
@@ -215,68 +211,7 @@
         )
       ],
       [
-        #block(
-          fill: luma(88%),
-          stroke: (paint: theme.neutral, thickness: 0.7pt),
-          inset: 0pt,
-        )[
-          #grid(
-            columns: (unit, logo-width, unit),
-            rows: (unit, auto, unit),
-            align: center + horizon,
-            [
-              #stack(
-                dir: ttb,
-                spacing: 1mm,
-                align(center)[#text(font: theme.heading-font, size: 11pt, fill: theme.neutral)[X]],
-                align(center)[#line(length: unit * 0.72, stroke: (paint: theme.neutral, thickness: 0.7pt))],
-              )
-            ],
-            [
-              #align(center + horizon)[
-                #stack(
-                  dir: ttb,
-                  spacing: 1mm,
-                  line(length: unit * 0.72, angle: 90deg, stroke: (paint: theme.neutral, thickness: 0.7pt)),
-                  text(font: theme.heading-font, size: 11pt, fill: theme.neutral)[X],
-                )
-              ]
-            ],
-            [],
-
-            [
-              #align(center + horizon)[
-                #stack(
-                  dir: ttb,
-                  spacing: 1mm,
-                  line(length: unit * 0.72, angle: 90deg, stroke: (paint: theme.neutral, thickness: 0.7pt)),
-                  text(font: theme.heading-font, size: 11pt, fill: theme.neutral)[X],
-                )
-              ]
-            ],
-            block(
-              width: logo-width,
-              fill: white,
-              stroke: (paint: theme.neutral, thickness: 0.7pt),
-              inset: 0pt,
-            )[
-              #image(logo, width: logo-width, fit: "contain", alt: alt)
-            ],
-            [
-              #align(center + horizon)[
-                #text(font: theme.heading-font, size: 11pt, fill: theme.neutral)[X]
-              ]
-            ],
-
-            [],
-            [
-              #align(center + horizon)[
-                #text(font: theme.heading-font, size: 11pt, fill: theme.neutral)[X]
-              ]
-            ],
-            [],
-          )
-        ]
+        #image(diagram, width: 132mm, fit: "contain", alt: alt)
       ],
     )
   ]
