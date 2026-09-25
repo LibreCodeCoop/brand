@@ -198,6 +198,8 @@
     theme,
     "../build/assets/librecode-logo-primary.svg",
     "Logo LibreCode dentro da área de proteção",
+    "../build/assets/librecode-reference-d.svg",
+    "Letra D da assinatura LibreCode usada para derivar a unidade X",
     92mm,
     0.14966083,
     0.63395194,
