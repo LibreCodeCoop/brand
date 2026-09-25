@@ -229,53 +229,71 @@
   note,
 ) = {
   let unit = logo-width * unit-ratio
-  let d-left = unit + logo-width * d-x-ratio
+  let before-d = logo-width * d-x-ratio
   let d-width = logo-width * d-width-ratio
+  let after-d = logo-width - before-d - d-width
 
   align(center)[
     #block(
-      fill: luma(90%),
-      stroke: (paint: luma(55%), thickness: 0.6pt),
-      inset: unit,
+      fill: luma(88%),
+      stroke: (paint: theme.neutral, thickness: 0.7pt),
+      inset: 0pt,
     )[
-      #place(top + left, dx: -unit * 0.58, dy: -unit * 0.72)[
-        #text(font: theme.heading-font, size: 15pt, weight: "regular", fill: luma(62%))[X]
-      ]
-      #place(left + top, dx: -unit * 0.72, dy: -unit * 0.08)[
-        #text(font: theme.heading-font, size: 15pt, weight: "regular", fill: luma(62%))[X]
-      ]
-
-      #block(
-        width: logo-width,
-        fill: white,
-        stroke: (paint: luma(55%), thickness: 0.6pt),
-        inset: 0pt,
-      )[
-        #image(logo, width: logo-width, fit: "contain", alt: alt)
-      ]
-
-      #place(bottom + left, dx: d-left, dy: unit * 0.20)[
-        #block(width: d-width, height: unit * 1.05)[
-          #place(left + top)[
-            #line(length: unit * 0.72, angle: 90deg, stroke: (paint: luma(55%), thickness: 0.6pt, dash: "dashed"))
+      #grid(
+        columns: (unit, logo-width, unit),
+        rows: (unit, auto, unit),
+        align: center + horizon,
+        [
+          #align(center + horizon)[
+            #text(font: theme.heading-font, size: 15pt, weight: "regular", fill: luma(62%))[X]
           ]
-          #place(right + top)[
-            #line(length: unit * 0.72, angle: 90deg, stroke: (paint: luma(55%), thickness: 0.6pt, dash: "dashed"))
+        ],
+        [],
+        [],
+        [
+          #align(center + horizon)[
+            #text(font: theme.heading-font, size: 15pt, weight: "regular", fill: luma(62%))[X]
           ]
-          #place(bottom)[
-            #line(length: d-width, stroke: (paint: luma(55%), thickness: 0.6pt, dash: "dashed"))
-          ]
-          #place(bottom, dy: 4.2mm)[
-            #text(font: theme.heading-font, size: 12pt, weight: "regular", fill: luma(62%))[X]
-          ]
-        ]
-      ]
+        ],
+        block(
+          width: logo-width,
+          fill: white,
+          stroke: (paint: theme.neutral, thickness: 0.7pt),
+          inset: 0pt,
+        )[
+          #image(logo, width: logo-width, fit: "contain", alt: alt)
+        ],
+        [],
+        [],
+        grid(
+          columns: (before-d, d-width, after-d),
+          rows: (unit,),
+          align: center + top,
+          [],
+          block(width: d-width, height: unit)[
+            #place(left + top)[
+              #line(length: unit * 0.62, angle: 90deg, stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed"))
+            ]
+            #place(right + top)[
+              #line(length: unit * 0.62, angle: 90deg, stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed"))
+            ]
+            #place(top, dy: unit * 0.58)[
+              #line(length: d-width, stroke: (paint: theme.neutral, thickness: 0.7pt, dash: "dashed"))
+            ]
+            #place(top + center, dy: unit * 0.64)[
+              #text(font: theme.heading-font, size: 12pt, weight: "regular", fill: luma(62%))[X]
+            ]
+          ],
+          [],
+        ),
+        [],
+      )
     ]
   ]
 
   v(7mm)
   align(center)[
-    #block(width: 126mm)[
+    #block(width: 132mm)[
       #text(font: theme.body-font, size: 9pt, fill: theme.neutral)[#note]
     ]
   ]
