@@ -32,12 +32,9 @@ Latest homologation manual: https://github.com/LibreCodeCoop/brand/releases/down
 - `source/artwork/` — canonical editable artwork.
 - `assets/` — asset distribution policy.
 - `manual/` — Typst source.
-- `docs/` — architecture, decisions, references, and the LibreCode completion plan.
+- `docs/` — architecture, decisions, references, registrations, and review guidance.
 - `LICENSES/` and `REUSE.toml` — licensing metadata.
 
-## Completion plan
-
-The implementation checklist distilled from the completed LibreSign brand work is documented in [`docs/libresign-parity-plan.md`](docs/libresign-parity-plan.md). Use it as the engineering and quality baseline while keeping all LibreCode-specific brand decisions independent.
 
 ## Publication status
 
