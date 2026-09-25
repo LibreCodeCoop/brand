@@ -26,7 +26,12 @@
   theme,
   [Sistema da marca],
   (
-    (number: "01", title: "Fundamentos", summary: "Nome, propósito, público e cooperativismo", anchor: "section-foundations"),
+    (
+      number: "01",
+      title: "Fundamentos",
+      summary: "Nome, propósito, público e cooperativismo",
+      anchor: "section-foundations",
+    ),
     (number: "02", title: "Logo", summary: "Artwork canônico e composição", anchor: "section-logo"),
     (
       number: "03",
@@ -35,7 +40,12 @@
       anchor: "section-visual-system",
     ),
     (number: "04", title: "Uso", summary: "Aplicações, voz, comunidade e acessibilidade", anchor: "section-usage"),
-    (number: "05", title: "Governança", summary: "Licenças, marcas, terceiros e fonte canônica", anchor: "section-governance"),
+    (
+      number: "05",
+      title: "Governança",
+      summary: "Licenças, marcas, terceiros e fonte canônica",
+      anchor: "section-governance",
+    ),
   ),
 )
 
