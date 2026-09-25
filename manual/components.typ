@@ -274,9 +274,9 @@
             )
           ],
           [
-            #text(font: theme.heading-font, size: 10pt, weight: "bold", fill: theme.accent)[D defines X]
+            #text(font: theme.heading-font, size: 10pt, weight: "bold", fill: theme.accent)[D define X]
             #v(1.5mm)
-            #text(font: theme.body-font, size: 8.8pt, fill: theme.neutral)[The width of the D in CODE is the clear-space unit X.]
+            #text(font: theme.body-font, size: 8.8pt, fill: theme.neutral)[A largura da letra D em CODE é a unidade X da área de proteção.]
           ],
         )
       ],
