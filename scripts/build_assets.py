@@ -105,6 +105,12 @@ def main() -> int:
         if marker:
             marker_target = out_dir / marker["filename"]
             crop_reference(variants[marker["variant"]], marker_target, marker["fraction"])
+            marker_colors = marker.get("colors", {})
+            if marker_colors:
+                marker_target.write_text(
+                    recolor(marker_target.read_text(encoding="utf-8"), marker_colors),
+                    encoding="utf-8",
+                )
             export(marker_target, out_dir, [512])
 
     primary = variants["primary"]
