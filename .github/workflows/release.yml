@@ -15,8 +15,8 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: typst-community/setup-typst@v5
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: typst-community/setup-typst@40d32bb6ccb235bd7f5164cb47cfd40a5ea3a314 # v5.2.0
         with:
           typst-version: 0.15.1
       - name: Install asset toolchain
@@ -32,6 +32,12 @@ jobs:
           cp build/assets/librecode-logo.png build/librecode-logo.png
           cp build/assets/librecode-logo-reversed.svg build/librecode-logo-reversed.svg
           sha256sum             build/librecode-brand-manual.pdf             build/librecode-logo.svg             build/librecode-logo.pdf             build/librecode-logo.png             build/librecode-logo-reversed.svg             > build/SHA256SUMS
+      - name: Validate PDF/UA-1 with veraPDF
+        run: |
+          docker run --rm \
+            -v "$PWD/build:/data:ro" \
+            verapdf/cli:latest \
+            --flavour ua1 --format text /data/librecode-brand-manual.pdf
       - name: Publish versioned release
         env:
           GH_TOKEN: ${{ github.token }}

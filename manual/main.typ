@@ -2,7 +2,10 @@
 // SPDX-License-Identifier: CC-BY-SA-4.0
 
 #import "theme.typ": theme
-#import "components.typ": cover, toc-page, section-page, manual-page, logo-stage, swatch, specimen, libresign-clear-space, librecode-clear-space, rule-pair, statement, back-cover
+#import "components.typ": (
+  back-cover, cover, librecode-clear-space, logo-stage, manual-page, rule-pair, section-page, specimen, statement,
+  swatch, toc-page,
+)
 
 #set document(
   title: "Manual da Marca LibreCode",
@@ -31,11 +34,11 @@
   theme,
   [Sistema da marca],
   (
-    ("01", "Fundamentos", "Nome, significado e pronúncia"),
-    ("02", "Logo", "Artwork canônico e composição"),
-    ("03", "Sistema visual", "Cores, tipografia, proteção e escala"),
-    ("04", "Uso", "Aplicações, consistência e acessibilidade"),
-    ("05", "Governança", "Licenças, trademark e fonte canônica"),
+    (number: "01", title: "Fundamentos", summary: "Nome, significado e pronúncia"),
+    (number: "02", title: "Logo", summary: "Artwork canônico e composição"),
+    (number: "03", title: "Sistema visual", summary: "Cores, tipografia, proteção e escala"),
+    (number: "04", title: "Uso", summary: "Aplicações, consistência e acessibilidade"),
+    (number: "05", title: "Governança", summary: "Licenças, trademark e fonte canônica"),
   ),
 )
 
@@ -213,15 +216,21 @@
   #grid(
     columns: (1fr, 1fr, 1fr),
     gutter: 7mm,
-    align(center,
-      image("../build/assets/librecode-logo-primary.svg", width: 42mm, alt: "Logo LibreCode em escala grande"),
-    ),
-    align(center,
-      image("../build/assets/librecode-logo-primary.svg", width: 30mm, alt: "Logo LibreCode em escala média"),
-    ),
-    align(center,
-      image("../build/assets/librecode-logo-primary.svg", width: 20mm, alt: "Logo LibreCode na escala mínima de impressão"),
-    ),
+    align(center, image(
+      "../build/assets/librecode-logo-primary.svg",
+      width: 42mm,
+      alt: "Logo LibreCode em escala grande",
+    )),
+    align(center, image(
+      "../build/assets/librecode-logo-primary.svg",
+      width: 30mm,
+      alt: "Logo LibreCode em escala média",
+    )),
+    align(center, image(
+      "../build/assets/librecode-logo-primary.svg",
+      width: 20mm,
+      alt: "Logo LibreCode na escala mínima de impressão",
+    )),
   )
   #v(7mm)
 
@@ -241,22 +250,39 @@
     gutter: 7mm,
     block(fill: white, inset: 8mm, height: 58mm)[
       #align(center + horizon)[
-        #image("../build/assets/librecode-logo-primary.svg", width: 78%, alt: "Logo LibreCode primário sobre fundo branco")
+        #image(
+          "../build/assets/librecode-logo-primary.svg",
+          width: 78%,
+          alt: "Logo LibreCode primário sobre fundo branco",
+        )
       ]
     ],
     block(fill: theme.soft, inset: 8mm, height: 58mm)[
       #align(center + horizon)[
-        #image("../build/assets/librecode-logo-primary.svg", width: 78%, alt: "Logo LibreCode primário sobre fundo cinza claro")
+        #image(
+          "../build/assets/librecode-logo-primary.svg",
+          width: 78%,
+          alt: "Logo LibreCode primário sobre fundo cinza claro",
+        )
       ]
     ],
+
     block(fill: theme.ink, inset: 8mm, height: 58mm)[
       #align(center + horizon)[
-        #image("../build/assets/librecode-logo-reversed.svg", width: 78%, alt: "Logo LibreCode reverso sobre fundo escuro")
+        #image(
+          "../build/assets/librecode-logo-reversed.svg",
+          width: 78%,
+          alt: "Logo LibreCode reverso sobre fundo escuro",
+        )
       ]
     ],
     block(fill: theme.accent, inset: 8mm, height: 58mm)[
       #align(center + horizon)[
-        #image("../build/assets/librecode-logo-reversed.svg", width: 78%, alt: "Logo LibreCode reverso sobre fundo vermelho")
+        #image(
+          "../build/assets/librecode-logo-reversed.svg",
+          width: 78%,
+          alt: "Logo LibreCode reverso sobre fundo vermelho",
+        )
       ]
     ],
   )

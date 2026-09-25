@@ -31,6 +31,10 @@ This repository defines the current LibreCode brand system.
 - third-party fonts: upstream license;
 - trademark permission: separate from copyright licensing.
 
+## Authoring workflow
+
+Use Typst 0.15.1 exactly for reproducible manual builds. Typstyle is the formatter enforced by CI. Tinymist is the recommended editor integration for Typst diagnostics, navigation, and local authoring feedback.
+
 ## Publication
 
 Git repository → generated assets/manual → public website/releases.

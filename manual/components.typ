@@ -61,11 +61,11 @@
       grid(
         columns: (15mm, 1fr),
         gutter: 4mm,
-        text(font: theme.heading-font, size: 16pt, weight: "bold", fill: theme.accent)[#entry.at(0)],
+        text(font: theme.heading-font, size: 16pt, weight: "bold", fill: theme.accent)[#entry.number],
         [
-          #text(font: theme.heading-font, size: 13pt, weight: "semibold", fill: theme.ink)[#entry.at(1)]
+          #text(font: theme.heading-font, size: 13pt, weight: "semibold", fill: theme.ink)[#entry.title]
           #v(1.5mm)
-          #text(font: theme.body-font, size: 9.5pt, fill: theme.neutral)[#entry.at(2)]
+          #text(font: theme.body-font, size: 9.5pt, fill: theme.neutral)[#entry.summary]
         ],
       )
       v(7mm)
@@ -167,76 +167,6 @@
   #text(font: theme.body-font, size: 9pt, fill: theme.neutral)[#family]
 ]
 
-#let libresign-clear-space(
-  theme,
-  logo,
-  alt,
-  marker,
-  marker-alt,
-  logo-width,
-  unit-ratio,
-  note,
-) = {
-  let unit = logo-width * unit-ratio
-  let marker-size = unit * 0.82
-  let outer-width = logo-width + unit + unit
-
-  align(center)[
-    #stack(
-      dir: ttb,
-      spacing: 7mm,
-      [
-        #grid(
-          columns: (22mm, 1fr),
-          gutter: 7mm,
-          align: center + horizon,
-          block(width: 20mm, height: 20mm, fill: white)[
-            #align(center + horizon)[
-              #image(marker, height: 15mm, fit: "contain", alt: marker-alt)
-            ]
-          ],
-          [
-            #text(font: theme.heading-font, size: 10pt, weight: "bold", fill: theme.accent)[E = clear-space module]
-            #v(1.5mm)
-            #text(font: theme.body-font, size: 8.8pt, fill: theme.neutral)[The capital E from the LibreSign wordmark defines the minimum non-interference distance.]
-          ],
-        )
-      ],
-      [
-        #block(
-          width: outer-width,
-          fill: white,
-          stroke: (paint: rgb("#c2ccc8"), thickness: 0.75pt, dash: "dashed"),
-          inset: 0pt,
-        )[
-          #place(top + center, dy: -marker-size / 2)[
-            #image(marker, height: marker-size, fit: "contain", alt: marker-alt)
-          ]
-          #place(bottom + center, dy: marker-size / 2)[
-            #image(marker, height: marker-size, fit: "contain", alt: marker-alt)
-          ]
-          #place(left + horizon, dx: -marker-size / 2)[
-            #rotate(-90deg, image(marker, height: marker-size, fit: "contain", alt: marker-alt))
-          ]
-          #place(right + horizon, dx: marker-size / 2)[
-            #rotate(90deg, image(marker, height: marker-size, fit: "contain", alt: marker-alt))
-          ]
-          #pad(left: unit, right: unit, top: unit, bottom: unit)[
-            #image(logo, width: logo-width, fit: "contain", alt: alt)
-          ]
-        ]
-      ],
-    )
-  ]
-
-  v(6mm)
-  align(center)[
-    #block(width: 132mm)[
-      #text(font: theme.body-font, size: 9pt, fill: theme.neutral)[#note]
-    ]
-  ]
-}
-
 #let librecode-clear-space(
   theme,
   logo,
@@ -276,7 +206,11 @@
           [
             #text(font: theme.heading-font, size: 10pt, weight: "bold", fill: theme.accent)[D define X]
             #v(1.5mm)
-            #text(font: theme.body-font, size: 8.8pt, fill: theme.neutral)[A largura da letra D em CODE é a unidade X da área de proteção.]
+            #text(
+              font: theme.body-font,
+              size: 8.8pt,
+              fill: theme.neutral,
+            )[A largura da letra D em CODE é a unidade X da área de proteção.]
           ],
         )
       ],
@@ -309,6 +243,7 @@
               ]
             ],
             [],
+
             [
               #align(center + horizon)[
                 #stack(
@@ -332,6 +267,7 @@
                 #text(font: theme.heading-font, size: 11pt, fill: theme.neutral)[X]
               ]
             ],
+
             [],
             [
               #align(center + horizon)[
