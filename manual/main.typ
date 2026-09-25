@@ -26,7 +26,7 @@
   theme,
   [Sistema da marca],
   (
-    (number: "01", title: "Fundamentos", summary: "Nome, significado e pronúncia", anchor: "section-foundations"),
+    (number: "01", title: "Fundamentos", summary: "Nome, propósito, público e cooperativismo", anchor: "section-foundations"),
     (number: "02", title: "Logo", summary: "Artwork canônico e composição", anchor: "section-logo"),
     (
       number: "03",
@@ -34,8 +34,8 @@
       summary: "Cores, tipografia, proteção e escala",
       anchor: "section-visual-system",
     ),
-    (number: "04", title: "Uso", summary: "Aplicações, consistência e acessibilidade", anchor: "section-usage"),
-    (number: "05", title: "Governança", summary: "Licenças, trademark e fonte canônica", anchor: "section-governance"),
+    (number: "04", title: "Uso", summary: "Aplicações, voz, comunidade e acessibilidade", anchor: "section-usage"),
+    (number: "05", title: "Governança", summary: "Licenças, marcas, terceiros e fonte canônica", anchor: "section-governance"),
   ),
 )
 
@@ -61,6 +61,76 @@
   Para organizações, essa liberdade se traduz em autonomia, interoperabilidade, continuidade, capacidade de escolha e menor dependência artificial de um único fornecedor.
 
   "Libre" não significa simplesmente "gratuito". Preço é uma condição comercial; liberdade é a proposta estratégica.
+]
+
+
+#manual-page(theme, [Fundamentos], [Quem somos e para quem falamos])[
+  A *LibreCode Coop* é uma cooperativa digital de especialistas em desenvolvimento de software livre.
+
+  A comunicação institucional se dirige a organizações que precisam operar tecnologia com clareza sobre como ela funciona, onde seus dados estão e quem pode manter ou adaptar as soluções.
+
+  #v(6mm)
+  #statement(theme, [
+    O público inclui organizações dos setores público, privado e do terceiro setor. A linguagem deve ser compreensível para quem decide e precisa operar tecnologia, sem abandonar a precisão técnica.
+  ])
+  #v(5mm)
+
+  A LibreCode desenvolve e também trabalha com implantação, hospedagem, suporte, integração e customização de soluções livres. A marca deve explicar a utilidade concreta desse trabalho, não apenas a tecnologia empregada.
+]
+
+#manual-page(theme, [Fundamentos], [Posicionamento])[
+  O eixo da mensagem é *tecnologia com transparência e liberdade*.
+
+  Liberdade, neste contexto, significa capacidade real de compreender, inspecionar, adaptar, integrar, manter e escolher como a tecnologia evolui.
+
+  #v(7mm)
+  #rule-pair(
+    theme,
+    [PREFIRA],
+    [
+      - autonomia e capacidade de escolha;
+      - interoperabilidade e continuidade;
+      - tecnologia documentada e auditável;
+      - benefícios concretos para a operação.
+    ],
+    [EVITE],
+    [
+      - tratar "libre" como sinônimo de gratuito;
+      - prometer independência absoluta;
+      - transformar software livre em slogan sem consequência prática;
+      - atacar quem utiliza soluções proprietárias.
+    ],
+  )
+]
+
+#manual-page(theme, [Fundamentos], [Cooperativismo e software livre])[
+  A LibreCode relaciona duas formas de distribuir poder: decisões organizacionais compartilhadas e tecnologia que pode ser estudada, auditada e modificada.
+
+  Cooperativismo não é um sufixo decorativo da marca. Ele descreve a forma de organização da LibreCode e deve aparecer de maneira coerente com princípios de gestão democrática, participação, autonomia, educação, intercooperação e interesse pela comunidade.
+
+  #v(6mm)
+  #statement(theme, [
+    A comunicação deve conectar software livre e cooperativismo pela transparência, pela colaboração e pela capacidade de participar das decisões que afetam pessoas e organizações.
+  ])
+]
+
+#manual-page(theme, [Fundamentos], [Missão, visão e valores])[
+  A comunicação institucional deve permanecer coerente com as formulações oficiais da LibreCode.
+
+  #v(4mm)
+  *Missão* \
+  Contribuir para uma economia solidária por meio do cooperativismo, ampliando o acesso e o controle sobre tecnologia, segurança e privacidade de dados com software livre.
+
+  #v(4mm)
+  *Visão* \
+  Crescer e fomentar novas cooperativas de tecnologias livres, buscando fortalecimento mútuo, maior visibilidade social e participação em decisões públicas.
+
+  #v(4mm)
+  *Valores* \
+  Economia solidária, segurança e privacidade, comunidade, transparência e copyleft/software livre.
+
+  #v(6mm)
+  Essas formulações podem ser resumidas conforme o contexto, mas não devem ser ampliadas para promessas que a organização não tenha assumido.
 ]
 
 #manual-page(theme, [Fundamentos], [Pronúncia])[
@@ -290,6 +360,41 @@
   Use a versão primária em fundos claros e a versão reversa em campos escuros ou saturados. Verifique sempre contraste e área de proteção.
 ]
 
+
+#manual-page(theme, [Uso], [Voz e tom])[
+  A LibreCode deve soar *tecnicamente competente, transparente, cooperativa e precisa*.
+
+  #v(6mm)
+  #rule-pair(
+    theme,
+    [PREFIRA],
+    [
+      - linguagem direta e verificável;
+      - benefícios concretos antes de slogans;
+      - "liberdade de escolha" e "menor dependência de fornecedor";
+      - termos de negócio compreensíveis com precisão técnica.
+    ],
+    [EVITE],
+    [
+      - superlativos sem evidência;
+      - promessas absolutas de segurança ou soberania;
+      - sugerir que software livre elimina risco operacional;
+      - jargão quando existe uma expressão mais clara.
+    ],
+  )
+]
+
+#manual-page(theme, [Uso], [Comunidade e contribuição])[
+  Software livre é construído e mantido por pessoas e organizações que usam, testam, documentam, reportam problemas, desenvolvem e financiam o trabalho.
+
+  A comunicação da LibreCode pode convidar essa participação e deve explicar o efeito concreto da contribuição: correções, novas funcionalidades, documentação, manutenção e continuidade de código auditável.
+
+  #v(7mm)
+  #statement(theme, [
+    Comunidade é parte do ecossistema da LibreCode, mas usuário, cliente, contribuidor, parceiro e cooperado são relações diferentes. Não use esses termos como se fossem equivalentes.
+  ])
+]
+
 #manual-page(theme, [Uso], [Acessibilidade])[
   - garanta contraste adequado ao papel de cada cor;
   - não dependa apenas de cor para transmitir significado;
@@ -310,6 +415,30 @@
   [A marca é um sistema público e versionado: regras, artwork e manual evoluem juntos.],
   "section-governance",
 )
+
+
+#manual-page(theme, [Governança], [Parcerias, compatibilidade e terceiros])[
+  Referências a projetos, fornecedores, clientes, integrações e outras organizações devem descrever a relação real.
+
+  É permitido afirmar compatibilidade ou integração quando isso for verdadeiro. Não use marca, texto ou composição visual que implique parceria, certificação, patrocínio ou endosso inexistente.
+
+  #v(7mm)
+  #statement(theme, [
+    Antes de chamar uma organização de "parceira", confirme que existe evidência atual e autorizada dessa relação. Na ausência dessa evidência, descreva apenas o fato verificável: integração, compatibilidade, uso, contribuição ou prestação de serviço.
+  ])
+]
+
+#manual-page(theme, [Governança], [Propriedade e decisões])[
+  Este repositório é a fonte canônica do sistema de marca. Regras, artwork, fontes, manual, licenças e automação evoluem por histórico versionado.
+
+  Direitos autorais e direitos de marca são assuntos diferentes. A licença de um arquivo não concede automaticamente permissão para sugerir afiliação, endosso ou caráter oficial.
+
+  #v(6mm)
+  O registro de marca só deve aparecer no manual com número de processo, classes, titularidade e situação quando houver evidência oficial verificada. Enquanto isso não existir no repositório, esses dados permanecem deliberadamente ausentes.
+
+  #v(6mm)
+  Alterações que mudem nome, logo, cores centrais, tipografia oficial, posicionamento ou outras regras normativas exigem uma decisão explícita de marca; não devem surgir como efeito colateral de manutenção técnica.
+]
 
 #manual-page(theme, [Governança], [Licenciamento e fonte canônica])[
   - documentação e artwork oficial: *CC BY-SA 4.0*;
