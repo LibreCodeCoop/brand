@@ -54,11 +54,12 @@ jobs:
         run: |
           git tag -f latest "$GITHUB_SHA"
           git push origin refs/tags/latest --force
-      - name: Publish stable latest URLs
+      - name: Publish mutable homologation URLs
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           if ! gh release view latest >/dev/null 2>&1; then
-            gh release create latest --prerelease --title "Latest brand build" --notes "Continuously updated build from the main branch."
+            gh release create latest --prerelease --title "Latest homologation build" --notes "Continuously updated homologation build from the main branch. This is not a versioned release."
           fi
+          gh release edit latest --title "Latest homologation build" --notes "Continuously updated homologation build from the main branch. This is not a versioned release." --prerelease
           gh release upload latest             build/librecode-brand-manual.pdf             build/librecode-logo.svg             build/librecode-logo.pdf             build/librecode-logo.png             build/librecode-logo-reversed.svg             build/SHA256SUMS             --clobber
