@@ -43,4 +43,4 @@ The implementation checklist distilled from the completed LibreSign brand work i
 
 The `latest` release is a mutable **homologation build** generated from `main`. It is intentionally not a stable versioned release and may change whenever the brand source changes.
 
-The first stable versioned release will only be created after external review and explicit approval.
+The first stable versioned release will only be created after external review and explicit approval. See [`docs/external-homologation.md`](docs/external-homologation.md) for the review scope and feedback process.
