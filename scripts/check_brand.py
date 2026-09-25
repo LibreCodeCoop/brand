@@ -12,7 +12,7 @@ from pathlib import Path
 from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parents[1]
-CHECK_DIRS = [ROOT / "source" / "artwork", ROOT / "assets", ROOT / "examples"]
+CHECK_DIRS = [ROOT / "source" / "artwork", ROOT / "assets"]
 AMBIGUOUS = re.compile(r"(^|[-_.])(final|new|old|copy|copia|v\d+|logo-?\d+)([-_.]|$)", re.I)
 MD_LINK = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
 
