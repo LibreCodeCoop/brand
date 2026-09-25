@@ -206,7 +206,11 @@
           [
             #text(font: theme.heading-font, size: 10pt, weight: "bold", fill: theme.accent)[D define X]
             #v(1.5mm)
-            #text(font: theme.body-font, size: 8.8pt, fill: theme.neutral)[A largura da letra D em CODE é a unidade X da área de proteção.]
+            #text(
+              font: theme.body-font,
+              size: 8.8pt,
+              fill: theme.neutral,
+            )[A largura da letra D em CODE é a unidade X da área de proteção.]
           ],
         )
       ],
@@ -239,6 +243,7 @@
               ]
             ],
             [],
+
             [
               #align(center + horizon)[
                 #stack(
@@ -262,6 +267,7 @@
                 #text(font: theme.heading-font, size: 11pt, fill: theme.neutral)[X]
               ]
             ],
+
             [],
             [
               #align(center + horizon)[
