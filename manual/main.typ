@@ -28,7 +28,12 @@
   (
     (number: "01", title: "Fundamentos", summary: "Nome, significado e pronúncia", anchor: "section-foundations"),
     (number: "02", title: "Logo", summary: "Artwork canônico e composição", anchor: "section-logo"),
-    (number: "03", title: "Sistema visual", summary: "Cores, tipografia, proteção e escala", anchor: "section-visual-system"),
+    (
+      number: "03",
+      title: "Sistema visual",
+      summary: "Cores, tipografia, proteção e escala",
+      anchor: "section-visual-system",
+    ),
     (number: "04", title: "Uso", summary: "Aplicações, consistência e acessibilidade", anchor: "section-usage"),
     (number: "05", title: "Governança", summary: "Licenças, trademark e fonte canônica", anchor: "section-governance"),
   ),
