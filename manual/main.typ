@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: CC-BY-SA-4.0
 
 #import "theme.typ": theme
-#import "components.typ": cover, toc-page, section-page, manual-page, logo-stage, swatch, specimen, clear-space-glyph, clear-space-x, rule-pair, statement, back-cover
+#import "components.typ": cover, toc-page, section-page, manual-page, logo-stage, swatch, specimen, libresign-clear-space, librecode-clear-space, rule-pair, statement, back-cover
 
 #set document(
   title: "Manual da Marca LibreCode",
@@ -194,15 +194,15 @@
   A área de proteção impede que texto, bordas e outras marcas disputem espaço visual com a assinatura.
 
   #v(7mm)
-  #clear-space-x(
+  #librecode-clear-space(
     theme,
     "../build/assets/librecode-logo-primary.svg",
     "Logo LibreCode dentro da área de proteção",
-    "../build/assets/librecode-reference-d.svg",
-    "Letra D de referência da assinatura LibreCode",
     92mm,
     0.14966083,
-    [*X* corresponde à largura da letra *D* da assinatura. Preserve uma unidade X em todo o perímetro do artwork oficial.],
+    0.63395194,
+    0.14966083,
+    [*X* corresponde à largura da letra *D* em CODE. A moldura interna coincide com os limites da marca; a moldura externa acrescenta uma unidade X em cada lado.],
   )
 ]
 
