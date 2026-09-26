@@ -240,7 +240,8 @@
           width: 84%,
           height: if slides { 42mm } else { auto },
           fit: "contain",
-          alt: "Composição oficial do logo LibreCode")
+          alt: "Composição oficial do logo LibreCode",
+        )
       ]
     ],
     [
