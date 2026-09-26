@@ -11,7 +11,9 @@
   title: "Manual da Marca LibreCode",
   author: "LibreCode Coop contributors",
 )
-#set text(font: theme.body-font, lang: "pt", size: 10.5pt, fill: theme.ink)
+#let slides = sys.inputs.at("format", default: "a4") == "slides"
+#set page(width: if slides { 338.667mm } else { 210mm }, height: if slides { 190.5mm } else { 297mm })
+#set text(font: theme.body-font, lang: "pt", size: if slides { 12pt } else { 10.5pt }, fill: theme.ink)
 #set par(leading: 0.72em, spacing: 0.7em, justify: false)
 #set list(indent: 0pt, body-indent: 1.2em)
 #cover(
@@ -407,7 +409,7 @@
 #manual-page(theme, [Uso], [Uso correto e incorreto])[
   Regras visuais ficam mais claras quando o uso correto aparece ao lado do erro.
 
-  #v(6mm)
+  #v(if slides { 2mm } else { 6mm })
   #rule-pair(
     theme,
     [CORRETO],
@@ -416,10 +418,12 @@
         #image(
           "../build/assets/librecode-logo-primary.svg",
           width: 72%,
+          height: if slides { 18mm } else { auto },
+          fit: "contain",
           alt: "Logo LibreCode correto, sem alterações",
         )
       ]
-      #v(4mm)
+      #v(if slides { 1mm } else { 4mm })
       Use o arquivo oficial nas proporções originais e preserve a área de proteção.
     ],
     [NÃO ROTACIONE],
@@ -429,15 +433,17 @@
           #image(
             "../build/assets/librecode-logo-primary.svg",
             width: 72%,
+            height: if slides { 18mm } else { auto },
+            fit: "contain",
             alt: "Exemplo incorreto do logo LibreCode rotacionado",
           )
         ]
       ]
-      #v(4mm)
+      #v(if slides { 1mm } else { 4mm })
       Não rotacione, incline, distorça ou reorganize a marca.
     ],
   )
-  #v(7mm)
+  #v(if slides { 2mm } else { 7mm })
   #rule-pair(
     theme,
     [ÁREA LIVRE],
@@ -447,11 +453,13 @@
           #image(
             "../build/assets/librecode-logo-primary.svg",
             width: 72%,
+            height: if slides { 18mm } else { auto },
+            fit: "contain",
             alt: "Logo LibreCode com espaço livre ao redor",
           )
         ]
       ]
-      #v(4mm)
+      #v(if slides { 1mm } else { 4mm })
       Mantenha texto, bordas e outras marcas fora da área de proteção.
     ],
     [NÃO APERTE],
@@ -464,12 +472,14 @@
           image(
             "../build/assets/librecode-logo-primary.svg",
             width: 100%,
+            height: if slides { 18mm } else { auto },
+            fit: "contain",
             alt: "Logo LibreCode com texto colocado perto demais",
           ),
           text(font: theme.heading-font, size: 9pt, weight: "bold", fill: theme.ink)[PARCEIRO],
         )
       ]
-      #v(4mm)
+      #v(if slides { 1mm } else { 4mm })
       Não coloque outros elementos dentro do espaço mínimo exigido.
     ],
   )

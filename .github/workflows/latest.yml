@@ -39,17 +39,22 @@ jobs:
         run: |
           python scripts/build_assets.py --output build/assets
           typst compile --root . --font-path source/fonts --pdf-standard ua-1 manual/main.typ build/librecode-brand-manual.pdf
+          typst compile --root . --font-path source/fonts --pdf-standard ua-1 --input format=slides manual/main.typ build/librecode-brand-manual-slides.pdf
           cp build/assets/librecode-logo.svg build/librecode-logo.svg
           cp build/assets/librecode-logo.pdf build/librecode-logo.pdf
           cp build/assets/librecode-logo.png build/librecode-logo.png
           cp build/assets/librecode-logo-reversed.svg build/librecode-logo-reversed.svg
-          sha256sum build/librecode-brand-manual.pdf build/librecode-logo* > build/SHA256SUMS
+          sha256sum build/librecode-brand-manual.pdf build/librecode-brand-manual-slides.pdf build/librecode-logo* > build/SHA256SUMS
       - name: Validate PDF/UA-1 with veraPDF
         run: |
           docker run --rm \
             -v "$PWD/build:/data:ro" \
             verapdf/cli:latest \
             --flavour ua1 --format text /data/librecode-brand-manual.pdf
+          docker run --rm \
+            -v "$PWD/build:/data:ro" \
+            verapdf/cli:latest \
+            --flavour ua1 --format text /data/librecode-brand-manual-slides.pdf
       - name: Move latest tag to this build
         run: |
           git tag -f latest "$GITHUB_SHA"
@@ -62,4 +67,4 @@ jobs:
             gh release create latest --prerelease --title "Latest homologation build" --notes "Continuously updated homologation build from the main branch. This is not a versioned release."
           fi
           gh release edit latest --title "Latest homologation build" --notes "Continuously updated homologation build from the main branch. This is not a versioned release." --prerelease
-          gh release upload latest             build/librecode-brand-manual.pdf             build/librecode-logo.svg             build/librecode-logo.pdf             build/librecode-logo.png             build/librecode-logo-reversed.svg             build/SHA256SUMS             --clobber
+          gh release upload latest             build/librecode-brand-manual.pdf             build/librecode-brand-manual-slides.pdf             build/librecode-logo.svg             build/librecode-logo.pdf             build/librecode-logo.png             build/librecode-logo-reversed.svg             build/SHA256SUMS             --clobber
