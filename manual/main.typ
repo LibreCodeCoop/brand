@@ -395,7 +395,7 @@
   #grid(
     columns: if slides { (1fr, 1fr, 1fr) } else { (1fr, 1fr) },
     gutter: if slides { 4mm } else { 5mm },
-    #app-example(
+    app-example(
       [CORRETO · FUNDO CLARO],
       white,
       theme.ink,
@@ -403,7 +403,7 @@
       "Logo LibreCode primário sobre fundo branco",
       [Use a versão primária em superfícies claras e visualmente estáveis.],
     ),
-    #app-example(
+    app-example(
       [CORRETO · FUNDO ESCURO],
       theme.ink,
       white,
@@ -411,7 +411,7 @@
       "Logo LibreCode reverso sobre fundo escuro",
       [Use a versão reversa em fundos escuros ou de cor forte.],
     ),
-    #app-example(
+    app-example(
       [CORRETO · COR DA MARCA],
       theme.accent,
       white,
@@ -419,7 +419,7 @@
       "Logo LibreCode reverso sobre fundo vermelho da marca",
       [Em campos saturados, prefira a versão reversa para manter contraste.],
     ),
-    #app-example(
+    app-example(
       [NÃO USE · BAIXO CONTRASTE],
       theme.ink,
       white,
@@ -427,7 +427,7 @@
       "Exemplo incorreto do logo LibreCode primário sobre fundo escuro",
       [Não use a versão primária quando o fundo comprometer a leitura.],
     ),
-    #app-example(
+    app-example(
       [NÃO USE · REVERSO NO CLARO],
       theme.soft,
       theme.ink,
@@ -435,7 +435,7 @@
       "Exemplo incorreto do logo LibreCode reverso sobre fundo claro",
       [Não use a versão reversa em fundo claro quando ela perder definição.],
     ),
-    #app-example(
+    app-example(
       [FUNDO INSTÁVEL],
       theme.soft,
       theme.ink,
