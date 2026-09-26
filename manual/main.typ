@@ -368,61 +368,83 @@
   "section-usage",
 )
 
-#manual-page(theme, [Uso], [Aplicação])[
-  #grid(
-    columns: (1fr, 1fr),
-    gutter: 7mm,
-    block(fill: white, inset: if slides { 6mm } else { 8mm }, height: if slides { 44mm } else { 58mm })[
-      #align(center + horizon)[
-        #image(
-          "../build/assets/librecode-logo-primary.svg",
-          width: 78%,
-          height: if slides { 30mm } else { auto },
-          fit: "contain",
-          alt: "Logo LibreCode primário sobre fundo branco",
-        )
-      ]
-    ],
-    block(fill: theme.soft, inset: if slides { 6mm } else { 8mm }, height: if slides { 44mm } else { 58mm })[
-      #align(center + horizon)[
-        #image(
-          "../build/assets/librecode-logo-primary.svg",
-          width: 78%,
-          height: if slides { 30mm } else { auto },
-          fit: "contain",
-          alt: "Logo LibreCode primário sobre fundo cinza claro",
-        )
-      ]
-    ],
+#manual-page(theme, [Uso], [Aplicação sobre fundos])[
+  Fundos diferentes exigem a versão correta do logo. O critério é simples: preserve contraste, legibilidade e área de proteção.
 
-    block(fill: theme.ink, inset: if slides { 6mm } else { 8mm }, height: if slides { 44mm } else { 58mm })[
-      #align(center + horizon)[
+  #let app-example(label, background, foreground, logo, alt, note) = block(
+    fill: background,
+    inset: if slides { 5mm } else { 6mm },
+    height: if slides { 49mm } else { 48mm },
+    [
+      #text(font: theme.heading-font, size: if slides { 8pt } else { 7.5pt }, weight: "bold", fill: foreground)[#label]
+      #v(if slides { 2mm } else { 3mm })
+      #align(center)[
         #image(
-          "../build/assets/librecode-logo-reversed.svg",
-          width: 78%,
-          height: if slides { 30mm } else { auto },
+          logo,
+          width: 74%,
+          height: if slides { 19mm } else { 17mm },
           fit: "contain",
-          alt: "Logo LibreCode reverso sobre fundo escuro",
+          alt: alt,
         )
       ]
-    ],
-    block(fill: theme.accent, inset: if slides { 6mm } else { 8mm }, height: if slides { 44mm } else { 58mm })[
-      #align(center + horizon)[
-        #image(
-          "../build/assets/librecode-logo-reversed.svg",
-          width: 78%,
-          height: if slides { 30mm } else { auto },
-          fit: "contain",
-          alt: "Logo LibreCode reverso sobre fundo vermelho",
-        )
-      ]
+      #v(if slides { 1.5mm } else { 2mm })
+      #text(size: if slides { 8.5pt } else { 8pt }, fill: foreground)[#note]
     ],
   )
-  #v(7mm)
 
-  Use a versão primária em fundos claros e a versão reversa em campos escuros ou saturados. Verifique sempre contraste e área de proteção.
+  #grid(
+    columns: if slides { (1fr, 1fr, 1fr) } else { (1fr, 1fr) },
+    gutter: if slides { 4mm } else { 5mm },
+    app-example(
+      [CORRETO · FUNDO CLARO],
+      white,
+      theme.ink,
+      "../build/assets/librecode-logo-primary.svg",
+      "Logo LibreCode primário sobre fundo branco",
+      [Use a versão primária em superfícies claras e visualmente estáveis.],
+    ),
+    app-example(
+      [CORRETO · FUNDO ESCURO],
+      theme.ink,
+      white,
+      "../build/assets/librecode-logo-reversed.svg",
+      "Logo LibreCode reverso sobre fundo escuro",
+      [Use a versão reversa em fundos escuros ou de cor forte.],
+    ),
+    app-example(
+      [CORRETO · COR DA MARCA],
+      theme.accent,
+      white,
+      "../build/assets/librecode-logo-reversed.svg",
+      "Logo LibreCode reverso sobre fundo vermelho da marca",
+      [Em campos saturados, prefira a versão reversa para manter contraste.],
+    ),
+    app-example(
+      [NÃO USE · BAIXO CONTRASTE],
+      theme.ink,
+      white,
+      "../build/assets/librecode-logo-primary.svg",
+      "Exemplo incorreto do logo LibreCode primário sobre fundo escuro",
+      [Não use a versão primária quando o fundo comprometer a leitura.],
+    ),
+    app-example(
+      [NÃO USE · REVERSO NO CLARO],
+      theme.soft,
+      theme.ink,
+      "../build/assets/librecode-logo-reversed.svg",
+      "Exemplo incorreto do logo LibreCode reverso sobre fundo claro",
+      [Não use a versão reversa em fundo claro quando ela perder definição.],
+    ),
+    app-example(
+      [FUNDO INSTÁVEL],
+      theme.soft,
+      theme.ink,
+      "../build/assets/librecode-logo-primary.svg",
+      "Logo LibreCode demonstrando aplicação sobre fundo visualmente estável",
+      [Em fotos, texturas ou gradientes, mova o logo para uma área estável ou use um campo sólido que preserve contraste e proteção.],
+    ),
+  )
 ]
-
 
 #manual-page(theme, [Uso], [Uso correto e incorreto])[
   Regras visuais ficam mais claras quando o uso correto aparece ao lado do erro.
