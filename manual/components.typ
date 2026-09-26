@@ -2,6 +2,8 @@
 // SPDX-FileCopyrightText: 2026 LibreSign contributors
 // SPDX-License-Identifier: CC-BY-SA-4.0
 
+#let slides = sys.inputs.at("format", default: "a4") == "slides"
+
 #let motif(theme) = {
   if theme.motif == "nodes" {
     place(top + left, dx: -8mm, dy: -10mm, circle(radius: 18mm, fill: theme.accent))
@@ -117,7 +119,11 @@
 ]
 
 #let manual-page(theme, kicker, title, body) = page(
-  margin: (left: 24mm, right: 22mm, top: 22mm, bottom: 20mm),
+  margin: if slides {
+    (left: 18mm, right: 18mm, top: 14mm, bottom: 12mm)
+  } else {
+    (left: 24mm, right: 22mm, top: 22mm, bottom: 20mm)
+  },
   fill: theme.paper,
   footer: context {
     align(right, text(
@@ -128,11 +134,16 @@
     ))
   },
 )[
-  #place(left + top, dx: -24mm, dy: -22mm, rect(width: 4mm, height: 100% + 42mm, fill: theme.accent))
+  #place(
+    left + top,
+    dx: if slides { -18mm } else { -24mm },
+    dy: if slides { -14mm } else { -22mm },
+    rect(width: 4mm, height: 100% + if slides { 26mm } else { 42mm }, fill: theme.accent),
+  )
   #text(font: theme.heading-font, size: 8.5pt, weight: "medium", fill: theme.accent)[#upper(kicker)]
   #v(4mm)
   #heading(level: 2, outlined: true, bookmarked: true, numbering: none)[
-    #text(font: theme.heading-font, size: 24pt, weight: "bold", fill: theme.ink)[#title]
+    #text(font: theme.heading-font, size: if slides { 26pt } else { 24pt }, weight: "bold", fill: theme.ink)[#title]
   ]
   #v(6mm)
   #body
@@ -140,13 +151,19 @@
 
 #let logo-stage(theme, logo, alt, dark: false) = block(
   width: 100%,
-  height: 78mm,
+  height: if slides { 56mm } else { 78mm },
   fill: if dark { theme.ink } else { white },
   radius: 4pt,
-  inset: 14mm,
+  inset: if slides { 9mm } else { 14mm },
 )[
   #align(center + horizon)[
-    #image(logo, width: 72%, height: 55mm, fit: "contain", alt: alt)
+    #image(
+      logo,
+      width: 72%,
+      height: if slides { 38mm } else { 55mm },
+      fit: "contain",
+      alt: alt,
+    )
   ]
 ]
 
@@ -154,7 +171,7 @@
   columns: (30mm, 1fr),
   gutter: 8mm,
   align: horizon,
-  rect(width: 30mm, height: 18mm, fill: rgb(hex), radius: 2pt),
+  rect(width: 30mm, height: if slides { 12mm } else { 18mm }, fill: rgb(hex), radius: 2pt),
   [
     *#name* \
     #raw(hex)
@@ -167,7 +184,7 @@
 
 #let specimen(theme, family, role, sample, size: 24pt) = block(
   width: 100%,
-  inset: 12pt,
+  inset: if slides { 8pt } else { 12pt },
   fill: white,
   radius: 4pt,
   stroke: (paint: theme.soft, thickness: 0.6pt),
