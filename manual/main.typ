@@ -526,8 +526,10 @@
               height: if slides { 18mm } else { auto },
               fit: "contain",
               alt: "Logo LibreCode com texto colocado perto demais",
-          ),
-          move(dx: if slides { -2mm } else { -1mm })[\n              #text(font: theme.heading-font, size: 8.5pt, weight: "semibold", fill: theme.ink)[Parceiro]\n            ],
+            ),
+            move(dx: if slides { -2mm } else { -1mm })[
+              #text(font: theme.heading-font, size: 8.5pt, weight: "semibold", fill: theme.ink)[Parceiro]
+            ],
           )
         ]
       ]
