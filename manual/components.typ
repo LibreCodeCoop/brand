@@ -151,13 +151,19 @@
 
 #let logo-stage(theme, logo, alt, dark: false) = block(
   width: 100%,
-  height: 78mm,
+  height: if slides { 56mm } else { 78mm },
   fill: if dark { theme.ink } else { white },
   radius: 4pt,
-  inset: 14mm,
+  inset: if slides { 9mm } else { 14mm },
 )[
   #align(center + horizon)[
-    #image(logo, width: 72%, height: 55mm, fit: "contain", alt: alt)
+    #image(
+      logo,
+      width: 72%,
+      height: if slides { 38mm } else { 55mm },
+      fit: "contain",
+      alt: alt,
+    )
   ]
 ]
 
