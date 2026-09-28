@@ -368,61 +368,92 @@
   "section-usage",
 )
 
-#manual-page(theme, [Uso], [Aplicação])[
-  #grid(
-    columns: (1fr, 1fr),
-    gutter: 7mm,
-    block(fill: white, inset: if slides { 6mm } else { 8mm }, height: if slides { 44mm } else { 58mm })[
-      #align(center + horizon)[
-        #image(
-          "../build/assets/librecode-logo-primary.svg",
-          width: 78%,
-          height: if slides { 30mm } else { auto },
-          fit: "contain",
-          alt: "Logo LibreCode primário sobre fundo branco",
-        )
-      ]
-    ],
-    block(fill: theme.soft, inset: if slides { 6mm } else { 8mm }, height: if slides { 44mm } else { 58mm })[
-      #align(center + horizon)[
-        #image(
-          "../build/assets/librecode-logo-primary.svg",
-          width: 78%,
-          height: if slides { 30mm } else { auto },
-          fit: "contain",
-          alt: "Logo LibreCode primário sobre fundo cinza claro",
-        )
-      ]
-    ],
+#manual-page(theme, [Uso], [Aplicação sobre fundos])[
+  Fundos diferentes exigem a versão correta do logo. O critério é simples: preserve contraste, legibilidade e área de proteção.
 
-    block(fill: theme.ink, inset: if slides { 6mm } else { 8mm }, height: if slides { 44mm } else { 58mm })[
-      #align(center + horizon)[
-        #image(
-          "../build/assets/librecode-logo-reversed.svg",
-          width: 78%,
-          height: if slides { 30mm } else { auto },
-          fit: "contain",
-          alt: "Logo LibreCode reverso sobre fundo escuro",
-        )
+  #let app-example(label, background, foreground, logo, alt, note) = block(
+    fill: background,
+    inset: if slides { 5mm } else { 6mm },
+    height: if slides { 50mm } else { 48mm },
+    [
+      #block(height: if slides { 7mm } else { 6mm })[
+        #text(
+          font: theme.heading-font,
+          size: if slides { 8.5pt } else { 7.5pt },
+          weight: "semibold",
+          fill: foreground,
+        )[#label]
       ]
-    ],
-    block(fill: theme.accent, inset: if slides { 6mm } else { 8mm }, height: if slides { 44mm } else { 58mm })[
-      #align(center + horizon)[
-        #image(
-          "../build/assets/librecode-logo-reversed.svg",
-          width: 78%,
-          height: if slides { 30mm } else { auto },
-          fit: "contain",
-          alt: "Logo LibreCode reverso sobre fundo vermelho",
-        )
+      #align(center)[
+        #block(height: if slides { 22mm } else { 19mm })[
+          #align(center + horizon)[
+            #image(
+              logo,
+              width: 74%,
+              height: if slides { 18mm } else { 17mm },
+              fit: "contain",
+              alt: alt,
+            )
+          ]
+        ]
       ]
+      #text(size: if slides { 8.5pt } else { 8pt }, fill: foreground)[#note]
     ],
   )
-  #v(7mm)
 
-  Use a versão primária em fundos claros e a versão reversa em campos escuros ou saturados. Verifique sempre contraste e área de proteção.
+  #grid(
+    columns: if slides { (1fr, 1fr, 1fr) } else { (1fr, 1fr) },
+    gutter: if slides { 4mm } else { 5mm },
+    app-example(
+      [Correto · fundo claro],
+      white,
+      theme.ink,
+      "../build/assets/librecode-logo-primary.svg",
+      "Logo LibreCode primário sobre fundo branco",
+      [Use a versão primária em superfícies claras e visualmente estáveis.],
+    ),
+    app-example(
+      [Correto · fundo escuro],
+      theme.ink,
+      white,
+      "../build/assets/librecode-logo-reversed.svg",
+      "Logo LibreCode reverso sobre fundo escuro",
+      [Use a versão reversa em fundos escuros ou de cor forte.],
+    ),
+    app-example(
+      [Correto · cor da marca],
+      theme.accent,
+      white,
+      "../build/assets/librecode-logo-reversed.svg",
+      "Logo LibreCode reverso sobre fundo vermelho da marca",
+      [Em campos saturados, prefira a versão reversa para manter contraste.],
+    ),
+    app-example(
+      [Não use · baixo contraste],
+      theme.ink,
+      white,
+      "../build/assets/librecode-logo-primary.svg",
+      "Exemplo incorreto do logo LibreCode primário sobre fundo escuro",
+      [Não use a versão primária quando o fundo comprometer a leitura.],
+    ),
+    app-example(
+      [Não use · reverso no claro],
+      theme.soft,
+      theme.ink,
+      "../build/assets/librecode-logo-reversed.svg",
+      "Exemplo incorreto do logo LibreCode reverso sobre fundo claro",
+      [Não use a versão reversa em fundo claro quando ela perder definição.],
+    ),
+    app-example(
+      [Fundo instável],
+      theme.soft,
+      theme.ink,
+      "../build/assets/librecode-logo-primary.svg",
+      "Logo LibreCode demonstrando aplicação sobre fundo visualmente estável",
+      [Em fotos, texturas ou gradientes, mova o logo para uma área estável ou use um campo sólido que preserve contraste e proteção.],
+    ),
+  )
 ]
-
 
 #manual-page(theme, [Uso], [Uso correto e incorreto])[
   Regras visuais ficam mais claras quando o uso correto aparece ao lado do erro.
@@ -430,7 +461,7 @@
   #v(if slides { 2mm } else { 6mm })
   #rule-pair(
     theme,
-    [CORRETO],
+    [Correto],
     [
       #align(center)[
         #image(
@@ -444,7 +475,7 @@
       #v(if slides { 1mm } else { 4mm })
       Use o arquivo oficial nas proporções originais e preserve a área de proteção.
     ],
-    [NÃO ROTACIONE],
+    [Não rotacione],
     [
       #align(center)[
         #rotate(8deg)[
@@ -460,11 +491,12 @@
       #v(if slides { 1mm } else { 4mm })
       Não rotacione, incline, distorça ou reorganize a marca.
     ],
+    card-height: if slides { 49mm } else { auto },
   )
   #v(if slides { 2mm } else { 7mm })
   #rule-pair(
     theme,
-    [ÁREA LIVRE],
+    [Área livre],
     [
       #block(fill: white, inset: 8mm)[
         #align(center)[
@@ -480,26 +512,31 @@
       #v(if slides { 1mm } else { 4mm })
       Mantenha texto, bordas e outras marcas fora da área de proteção.
     ],
-    [NÃO APERTE],
+    [Não aperte],
     [
       #block(fill: white, inset: 1mm)[
-        #grid(
-          columns: (1fr, auto),
-          gutter: 1mm,
-          align: center + horizon,
-          image(
-            "../build/assets/librecode-logo-primary.svg",
-            width: 100%,
-            height: if slides { 18mm } else { auto },
-            fit: "contain",
-            alt: "Logo LibreCode com texto colocado perto demais",
-          ),
-          text(font: theme.heading-font, size: 9pt, weight: "bold", fill: theme.ink)[PARCEIRO],
-        )
+        #align(center)[
+          #grid(
+            columns: (auto, auto),
+            gutter: 0mm,
+            align: center + horizon,
+            image(
+              "../build/assets/librecode-logo-primary.svg",
+              width: if slides { 44mm } else { 52mm },
+              height: if slides { 18mm } else { auto },
+              fit: "contain",
+              alt: "Logo LibreCode com texto colocado perto demais",
+            ),
+            move(dx: if slides { -2mm } else { -1mm })[
+              #text(font: theme.heading-font, size: 8.5pt, weight: "semibold", fill: theme.ink)[Parceiro]
+            ],
+          )
+        ]
       ]
       #v(if slides { 1mm } else { 4mm })
       Não coloque outros elementos dentro do espaço mínimo exigido.
     ],
+    card-height: if slides { 49mm } else { auto },
   )
 ]
 

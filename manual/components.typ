@@ -230,27 +230,39 @@
   ]
 }
 
-#let rule-pair(theme, good-title, good-body, bad-title, bad-body) = grid(
+#let rule-pair(theme, good-title, good-body, bad-title, bad-body, card-height: auto) = grid(
   columns: (1fr, 1fr),
-  gutter: 7mm,
+  gutter: if slides { 6mm } else { 7mm },
   block(
-    inset: 12pt,
+    height: card-height,
+    inset: if slides { 10pt } else { 12pt },
     fill: white,
     radius: 4pt,
     stroke: (paint: theme.accent-alt, thickness: 1pt),
   )[
-    #text(font: theme.heading-font, size: 10pt, weight: "bold", fill: theme.accent-alt)[#good-title]
-    #v(3mm)
+    #text(
+      font: theme.heading-font,
+      size: if slides { 9pt } else { 10pt },
+      weight: "semibold",
+      fill: theme.accent-alt,
+    )[#good-title]
+    #v(if slides { 2mm } else { 3mm })
     #good-body
   ],
   block(
-    inset: 12pt,
+    height: card-height,
+    inset: if slides { 10pt } else { 12pt },
     fill: white,
     radius: 4pt,
     stroke: (paint: theme.neutral, thickness: 1pt),
   )[
-    #text(font: theme.heading-font, size: 10pt, weight: "bold", fill: theme.neutral)[#bad-title]
-    #v(3mm)
+    #text(
+      font: theme.heading-font,
+      size: if slides { 9pt } else { 10pt },
+      weight: "semibold",
+      fill: theme.neutral,
+    )[#bad-title]
+    #v(if slides { 2mm } else { 3mm })
     #bad-body
   ],
 )
